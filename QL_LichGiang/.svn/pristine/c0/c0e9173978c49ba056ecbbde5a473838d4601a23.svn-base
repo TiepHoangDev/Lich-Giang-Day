@@ -1,0 +1,176 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcCoursesJourna
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcCoursesJourna = new DevExpress.XtraGrid.GridControl();
+            this.grdCoursesJourna = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.CJId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CoId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.uluMKH = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.DayOf = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Contents = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemLookUpEdit2 = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.grcCoursesJourna)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCoursesJourna)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uluMKH)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(693, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcCoursesJourna
+            // 
+            this.grcCoursesJourna.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcCoursesJourna.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcCoursesJourna.Location = new System.Drawing.Point(0, 65);
+            this.grcCoursesJourna.MainView = this.grdCoursesJourna;
+            this.grcCoursesJourna.Name = "grcCoursesJourna";
+            this.grcCoursesJourna.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.uluMKH,
+            this.repositoryItemLookUpEdit2});
+            this.grcCoursesJourna.Size = new System.Drawing.Size(693, 306);
+            this.grcCoursesJourna.TabIndex = 1;
+            this.grcCoursesJourna.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdCoursesJourna});
+            this.grcCoursesJourna.Load += new System.EventHandler(this.grcCoursesJourna_Load);
+            // 
+            // grdCoursesJourna
+            // 
+            this.grdCoursesJourna.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.CJId,
+            this.CoId,
+            this.DayOf,
+            this.Contents,
+            this.Description});
+            this.grdCoursesJourna.GridControl = this.grcCoursesJourna;
+            this.grdCoursesJourna.Name = "grdCoursesJourna";
+            // 
+            // CJId
+            // 
+            this.CJId.Caption = "CJId";
+            this.CJId.FieldName = "CJId";
+            this.CJId.Name = "CJId";
+            this.CJId.Visible = true;
+            this.CJId.VisibleIndex = 0;
+            this.CJId.Width = 135;
+            // 
+            // CoId
+            // 
+            this.CoId.Caption = "Mã Khóa Học";
+            this.CoId.FieldName = "CourseName";
+            this.CoId.Name = "CoId";
+            this.CoId.Visible = true;
+            this.CoId.VisibleIndex = 1;
+            this.CoId.Width = 300;
+            // 
+            // uluMKH
+            // 
+            this.uluMKH.AutoHeight = false;
+            this.uluMKH.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.uluMKH.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CourseName", 150, "Tên Khóa Học"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CoId", 150, "Mã Khóa Học")});
+            this.uluMKH.DisplayMember = "CourseName";
+            this.uluMKH.Name = "uluMKH";
+            this.uluMKH.ValueMember = "CoId";
+            // 
+            // DayOf
+            // 
+            this.DayOf.Caption = "DayOf";
+            this.DayOf.FieldName = "DayOf";
+            this.DayOf.Name = "DayOf";
+            this.DayOf.Visible = true;
+            this.DayOf.VisibleIndex = 2;
+            this.DayOf.Width = 80;
+            // 
+            // Contents
+            // 
+            this.Contents.Caption = "Contents";
+            this.Contents.FieldName = "Contents";
+            this.Contents.Name = "Contents";
+            this.Contents.Visible = true;
+            this.Contents.VisibleIndex = 3;
+            this.Contents.Width = 80;
+            // 
+            // Description
+            // 
+            this.Description.Caption = "Description";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 4;
+            this.Description.Width = 80;
+            // 
+            // repositoryItemLookUpEdit2
+            // 
+            this.repositoryItemLookUpEdit2.AutoHeight = false;
+            this.repositoryItemLookUpEdit2.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLookUpEdit2.Name = "repositoryItemLookUpEdit2";
+            // 
+            // UcCoursesJourna
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcCoursesJourna);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcCoursesJourna";
+            this.Size = new System.Drawing.Size(693, 371);
+            ((System.ComponentModel.ISupportInitialize)(this.grcCoursesJourna)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCoursesJourna)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uluMKH)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLookUpEdit2)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcCoursesJourna;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdCoursesJourna;
+        private DevExpress.XtraGrid.Columns.GridColumn CJId;
+        private DevExpress.XtraGrid.Columns.GridColumn CoId;
+        private DevExpress.XtraGrid.Columns.GridColumn DayOf;
+        private DevExpress.XtraGrid.Columns.GridColumn Contents;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit uluMKH;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLookUpEdit2;
+
+    }
+}

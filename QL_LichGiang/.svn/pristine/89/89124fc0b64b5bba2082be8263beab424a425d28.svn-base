@@ -1,0 +1,42 @@
+
+using BUSINESS_OBJECT.Objects;
+using DATA_ACCESS_LAYER.Dao;
+using System;
+using System.Collections.Generic;
+namespace BUSINESS_LOGIC_LAYER.BCL
+{
+    public class PermisstionBCL
+    {
+
+        public bool Insert(PermisstionObject ob)
+        {
+            return new PermisstionDao().Insert(ob);
+        }
+
+
+        public bool Update(PermisstionObject ob)
+        {
+            return new PermisstionDao().Update(ob);
+        }
+
+
+        public List<PermisstionObject> GetAll()
+        {
+            return new PermisstionDao().GetAll();
+        }
+
+
+        public PermisstionObject GetByPerID(PermisstionObject ob)
+        {
+            return new PermisstionDao().GetByPerID(ob);
+        }
+
+
+        public bool Delete(PermisstionObject ob)
+        {
+            return new PermisstionDao().Delete(ob);
+        }
+
+
+    }
+}

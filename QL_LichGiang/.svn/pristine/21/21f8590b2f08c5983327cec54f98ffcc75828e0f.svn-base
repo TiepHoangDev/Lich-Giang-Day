@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+namespace QL_LICHGIANGDAY.UserForm.StudentDetailt
+{
+    public partial class ChiTietHocVien : DevExpress.XtraEditors.XtraForm
+    {
+        public ChiTietHocVien()
+        {
+            InitializeComponent();
+            btnCapNhat.Enabled = false;
+        }
+
+        public ChiTietHocVien(StudentDetailtObjects obj)
+        {
+            InitializeComponent();
+            if (obj != null)
+            {
+                txtMota.Text = obj.Description;
+                cboMaHocVien.Text = ""+obj.StudetId;
+                cboMaKhoaHoc.Text = ""+obj.CoId;           
+
+                btnThemMoi.Enabled = false;
+
+            }
+
+
+        }
+
+        private void btnThemMoi_Click(object sender, EventArgs e)
+        {
+            StudentObjects objStudent = (StudentObjects)cboMaHocVien.SelectedItem;
+            CoursesObjects objCourses = (CoursesObjects)cboMaKhoaHoc.SelectedItem;
+            StudentDetailtObjects objStudentDetailt = new StudentDetailtObjects
+            {
+                StdId = Guid.NewGuid(),
+                Description = txtMota.Text,
+                StudetId = (Guid)objStudent.StudetId,
+                CoId = (Guid)objCourses.CoId
+            };
+            
+            StudentDetailtBCL mStudentDetailtBCL = new StudentDetailtBCL();
+            
+            mStudentDetailtBCL.Insert(objStudentDetailt);
+            MessageBox.Show("Thêm Chi tiết lớp học thành công!");
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {           
+           
+            StudentDetailtObjects objStudentDetailtObject = new StudentDetailtObjects
+            {
+               StudetId = Guid.Parse(cboMaHocVien.Text),
+               CoId = Guid.Parse(cboMaKhoaHoc.Text),
+               Description = txtMota.Text
+            };
+
+            StudentDetailtBCL mStudentDetailtBCL = new StudentDetailtBCL();
+            mStudentDetailtBCL.Update(objStudentDetailtObject);
+            MessageBox.Show("Cập nhật Chi tiết Học viên thành công!");
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+         void LoadDataHocVien()
+        {
+            StudentBCL mStudentBCL = new StudentBCL();
+            List<StudentObjects> lisStudent = mStudentBCL.GetAll();
+            foreach (StudentObjects obj in lisStudent)
+            {                 
+              cboMaHocVien.Properties.Items.Add(obj);
+            }
+        }
+
+         void LoadDataKhoaHoc()
+        {
+            CoursesBCL mCoursesBCL = new CoursesBCL();
+            List<CoursesObjects> lisCourse = mCoursesBCL.GetAll();
+            foreach (CoursesObjects obj in lisCourse)
+            {                 
+              cboMaKhoaHoc.Properties.Items.Add(obj);
+            }
+        }
+
+        private void groupControl1_Enter(object sender, EventArgs e)
+        {
+            LoadDataKhoaHoc();
+            LoadDataHocVien();
+        }
+
+
+    }
+}

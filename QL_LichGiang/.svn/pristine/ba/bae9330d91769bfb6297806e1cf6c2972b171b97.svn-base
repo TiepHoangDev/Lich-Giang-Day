@@ -1,0 +1,84 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcCourses
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcCourses = new DevExpress.XtraGrid.GridControl();
+            this.grdCourses = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grcCourses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(784, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcCourses
+            // 
+            this.grcCourses.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcCourses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcCourses.Location = new System.Drawing.Point(0, 65);
+            this.grcCourses.MainView = this.grdCourses;
+            this.grcCourses.Name = "grcCourses";
+            this.grcCourses.Size = new System.Drawing.Size(784, 398);
+            this.grcCourses.TabIndex = 1;
+            this.grcCourses.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdCourses});
+            this.grcCourses.Load += new System.EventHandler(this.grcCourses_Load);
+            // 
+            // grdCourses
+            // 
+            this.grdCourses.GridControl = this.grcCourses;
+            this.grdCourses.Name = "grdCourses";
+            // 
+            // UcCourses
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcCourses);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcCourses";
+            this.Size = new System.Drawing.Size(784, 463);
+            ((System.ComponentModel.ISupportInitialize)(this.grcCourses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private QL_LICHGIANGDAY.UserControll.UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcCourses;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdCourses;
+    }
+}

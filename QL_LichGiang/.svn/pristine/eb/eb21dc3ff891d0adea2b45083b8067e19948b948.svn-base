@@ -1,0 +1,163 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcSchedulers
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcSchedulers));
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcSchedulers = new DevExpress.XtraGrid.GridControl();
+            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
+            this.WeId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ShiftId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CoId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.btnDetail = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
+            ((System.ComponentModel.ISupportInitialize)(this.grcSchedulers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDetail)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(652, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcSchedulers
+            // 
+            this.grcSchedulers.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcSchedulers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcSchedulers.Location = new System.Drawing.Point(0, 65);
+            this.grcSchedulers.MainView = this.cardView1;
+            this.grcSchedulers.Name = "grcSchedulers";
+            this.grcSchedulers.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.btnDetail});
+            this.grcSchedulers.Size = new System.Drawing.Size(652, 331);
+            this.grcSchedulers.TabIndex = 1;
+            this.grcSchedulers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.cardView1});
+            this.grcSchedulers.Load += new System.EventHandler(this.grcSchedulers_Load);
+            // 
+            // cardView1
+            // 
+            this.cardView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.WeId,
+            this.ShiftId,
+            this.CoId,
+            this.Description,
+            this.gridColumn1});
+            this.cardView1.FocusedCardTopFieldIndex = 0;
+            this.cardView1.GridControl = this.grcSchedulers;
+            this.cardView1.Name = "cardView1";
+            this.cardView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Auto;
+            // 
+            // WeId
+            // 
+            this.WeId.Caption = "Thời gian";
+            this.WeId.FieldName = "WeName";
+            this.WeId.Name = "WeId";
+            this.WeId.OptionsColumn.ReadOnly = true;
+            this.WeId.Visible = true;
+            this.WeId.VisibleIndex = 0;
+            // 
+            // ShiftId
+            // 
+            this.ShiftId.Caption = "Ca";
+            this.ShiftId.FieldName = "ShiftName";
+            this.ShiftId.Name = "ShiftId";
+            this.ShiftId.OptionsColumn.ReadOnly = true;
+            this.ShiftId.Visible = true;
+            this.ShiftId.VisibleIndex = 1;
+            // 
+            // CoId
+            // 
+            this.CoId.Caption = "Khóa học";
+            this.CoId.FieldName = "CourseName";
+            this.CoId.Name = "CoId";
+            this.CoId.OptionsColumn.ReadOnly = true;
+            this.CoId.Visible = true;
+            this.CoId.VisibleIndex = 2;
+            // 
+            // Description
+            // 
+            this.Description.Caption = "Miêu tả";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.OptionsColumn.ReadOnly = true;
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 3;
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Xem chi tiết";
+            this.gridColumn1.ColumnEdit = this.btnDetail;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 4;
+            // 
+            // btnDetail
+            // 
+            this.btnDetail.AutoHeight = false;
+            this.btnDetail.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Glyph, "", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, ((System.Drawing.Image)(resources.GetObject("btnDetail.Buttons"))), new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.HideTextEditor;
+            this.btnDetail.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.btnDetail_ButtonClick);
+            // 
+            // UcSchedulers
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcSchedulers);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcSchedulers";
+            this.Size = new System.Drawing.Size(652, 396);
+            ((System.ComponentModel.ISupportInitialize)(this.grcSchedulers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDetail)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcSchedulers;
+        private DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit btnDetail;
+        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
+        private DevExpress.XtraGrid.Columns.GridColumn WeId;
+        private DevExpress.XtraGrid.Columns.GridColumn ShiftId;
+        private DevExpress.XtraGrid.Columns.GridColumn CoId;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+    }
+}

@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+namespace QL_LICHGIANGDAY.UserForm.ExpertsDetailt
+{
+    public partial class UsEditExpertsDetailt : DevExpress.XtraEditors.XtraForm
+    {
+        private ExpertsObjects objExpert;
+        private ExpertsDetailtObjects objExpertDetailt;
+        public UsEditExpertsDetailt(Guid ID_ExpertDetail)
+        {
+            InitializeComponent();
+            objExpertDetailt = new ExpertsDetailtBCL().GetByExId(ID_ExpertDetail);
+            objExpert = new ExpertsBCL().GetByExpertId((Guid)objExpertDetailt.ExpertId);
+        }
+
+        private void UsEditExpertsDetailt_Load(object sender, EventArgs e)
+        {
+            lookupCourseID.Properties.DataSource = new CoursesBCL().GetAll().Where(q => q.Deleted != true).ToList();
+            lookupCourseID.Properties.DisplayMember = "CourseName";
+            lookupCourseID.Properties.ValueMember = "CoId";
+            lookupCourseID.EditValue = objExpertDetailt.CoId; 
+
+            txtFullName.Text = objExpert.FullName;
+            txtSpecialize.Text = objExpert.Specialize;
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.Close();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lookupCourseID.EditValue == null) MessageBox.Show("Chọn một khóa học.", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            else
+            {
+                objExpertDetailt.CoId = (Guid)lookupCourseID.EditValue;
+                objExpertDetailt.Description = rtbDescription.Text;
+                var data = new ExpertsDetailtBCL().Update(objExpertDetailt);
+                if (data == true)
+                {
+                    MessageBox.Show(string.Format("Sửa chi tiết giảng viên {0} thành công", objExpert.FullName), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("Sửa chi tiết giảng viên {0} thất bại", objExpert.FullName), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+    }
+}

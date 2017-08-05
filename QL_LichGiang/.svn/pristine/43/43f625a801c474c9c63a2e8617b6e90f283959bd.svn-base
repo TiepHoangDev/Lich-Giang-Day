@@ -1,0 +1,81 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+namespace QL_LICHGIANGDAY.UserControll
+{
+    public partial class UcWeekdaysDao : UserControl
+    {
+        private PermisstionObject m_objPer;
+        public UcWeekdaysDao(PermisstionObject objPer)
+        {
+            m_objPer = null;
+            m_objPer = objPer;
+            InitializeComponent();
+            ucBaseControl1.EnableDisnableButtom(m_objPer);
+            ucBaseControl1.onThemThongTin += new EventHandler(ThemThuTrongTuan);
+            ucBaseControl1.onXoaThongTin += new EventHandler(XoaThuTrongTuan);
+            ucBaseControl1.onSuaThongTin += new EventHandler(CapNhatThuTrongTuan);
+        }
+
+        void ThemThuTrongTuan(object sender, EventArgs e)
+        {
+            UserForm.Weekdays.ThuTrongTuan frm1 = new UserForm.Weekdays.ThuTrongTuan();
+            frm1.ShowDialog();
+            LoadWeekdays();
+        }
+
+        void CapNhatThuTrongTuan(object sender, EventArgs e)
+        {
+            WeekdaysObjects obj = new WeekdaysObjects
+            {
+                WeId = (Guid)grdWeekdaysDao.GetFocusedRowCellValue("WeId"),
+                WeName = "" + grdWeekdaysDao.GetFocusedRowCellValue("WeName"),
+                Description = "" + grdWeekdaysDao.GetFocusedRowCellValue("Description")             
+            };
+
+            UserForm.Weekdays.ThuTrongTuan frm1 = new UserForm.Weekdays.ThuTrongTuan(obj);
+            frm1.ShowDialog();
+            LoadWeekdays();
+        }
+
+        void XoaThuTrongTuan(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Sure", "Delete Weekdays", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                WeekdaysObjects obj = new WeekdaysObjects
+                {
+                    WeId = (Guid)grdWeekdaysDao.GetFocusedRowCellValue("WeId")
+                };
+                WeekdaysBCL mWeekdaysBCL = new WeekdaysBCL();
+                mWeekdaysBCL.Delete(obj.WeId);
+                MessageBox.Show("Xóa Thứ Trong Tuần thành công!");
+                LoadWeekdays();
+            }
+
+            LoadWeekdays();
+        }
+
+       
+
+        void LoadWeekdays()
+        {
+            WeekdaysBCL mWeekdayBCL = new WeekdaysBCL();
+            grcWeekdaysDao.DataSource = mWeekdayBCL.GetAll();
+        }
+
+        private void UcWeekdaysDao_Load(object sender, EventArgs e)
+        {
+            LoadWeekdays();
+        }
+    }
+}

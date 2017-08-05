@@ -1,0 +1,59 @@
+
+using BUSINESS_OBJECT.Objects;
+using System;
+using System.Collections.Generic;
+using DATA_ACCESS_LAYER.DataModels;
+namespace DATA_ACCESS_LAYER.Dao
+{
+    public class PermisstionDao
+    {
+
+        public bool Insert(PermisstionObject ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            return db.sp_tbl_Permisstion_INSERT(ob.PerID, ob.F_ADD, ob.F_EDIT, ob.F_DELETE, ob.F_SEARCH, ob.FeaId, ob.UserId) > 0;
+        }
+
+
+        public bool Update(PermisstionObject ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            return db.sp_tbl_Permisstion_UPDATE(ob.PerID, ob.F_ADD, ob.F_EDIT, ob.F_DELETE, ob.F_SEARCH, ob.FeaId, ob.UserId) > 0;
+        }
+
+
+        public List<PermisstionObject> GetAll()
+        {
+            List<PermisstionObject> lst = new List<PermisstionObject>();
+            var db = new eTrainingScheduleEntities();
+            var list = db.sp_tbl_Permisstion_GetAll();
+            foreach (var item in list)
+            {
+                PermisstionObject ob = new PermisstionObject();
+                ob.PerID = item.PerID; ob.F_ADD = item.F_ADD; ob.F_EDIT = item.F_EDIT; ob.F_DELETE = item.F_DELETE; ob.F_SEARCH = item.F_SEARCH; ob.FeaId = item.FeaId; ob.UserId = item.UserId;
+                lst.Add(ob);
+            }
+            return lst;
+        }
+
+
+        public PermisstionObject GetByPerID(Guid ID)
+        {
+            var db = new eTrainingScheduleEntities();
+            var list = db.sp_tbl_Permisstion_GetByPerID(ID);
+            PermisstionObject obj = new PermisstionObject();
+            foreach (var item in list)
+            {
+                obj.PerID = item.PerID; obj.F_ADD = item.F_ADD; obj.F_EDIT = item.F_EDIT; obj.F_DELETE = item.F_DELETE; obj.F_SEARCH = item.F_SEARCH; obj.FeaId = item.FeaId; obj.UserId = item.UserId;
+            }
+            return obj;
+        }
+
+
+        public bool Delete(Guid ID)
+        {
+            var db = new eTrainingScheduleEntities();
+            return db.sp_tbl_Permisstion_DELETE(ID) > 0;
+        }
+    }
+}

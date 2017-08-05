@@ -1,0 +1,42 @@
+
+using BUSINESS_OBJECT.Objects;
+using DATA_ACCESS_LAYER.Dao;
+using System;
+using System.Collections.Generic;
+namespace BUSINESS_LOGIC_LAYER.BCL
+{
+    public class RoleBCL
+    {
+
+        public bool Insert(RoleObject ob)
+        {
+            return new RoleDao().Insert(ob);
+        }
+
+
+        public bool Update(RoleObject ob)
+        {
+            return new RoleDao().Update(ob);
+        }
+
+
+        public List<RoleObject> GetAll()
+        {
+            return new RoleDao().GetAll();
+        }
+
+
+        public RoleObject GetByRoleId(RoleObject ob)
+        {
+            return new RoleDao().GetByRoleId(ob);
+        }
+
+
+        public bool Delete(RoleObject ob)
+        {
+            return new RoleDao().Delete(ob);
+        }
+
+
+    }
+}

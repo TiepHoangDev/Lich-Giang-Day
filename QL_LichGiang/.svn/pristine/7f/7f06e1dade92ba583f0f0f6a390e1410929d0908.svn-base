@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using BUSINESS_LOGIC_LAYER.BCL;
+
+namespace QL_LICHGIANGDAY.UserControll
+{
+    public partial class UcStudent : UserControl
+    {
+        private StudentBCL obj = new StudentBCL();
+        public UcStudent()
+        {
+            InitializeComponent();
+        }
+
+        private void grcStudent_Load(object sender, EventArgs e)
+        {
+            Load_Student();
+        }
+
+        private void Load_Student()
+        {
+            grcStudent.DataSource = obj.GetAll();
+        }
+    }
+}

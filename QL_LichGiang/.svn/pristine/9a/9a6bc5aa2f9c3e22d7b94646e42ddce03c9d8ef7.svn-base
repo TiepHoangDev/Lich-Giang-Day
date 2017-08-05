@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using BUSINESS_OBJECT.Objects;
+using BUSINESS_LOGIC_LAYER.BCL;
+
+
+namespace QL_LICHGIANGDAY.UserControll
+{
+    public partial class UcStudentDetailt : UserControl
+    {
+        public UcStudentDetailt()
+        {
+            InitializeComponent();
+            ucBaseControl1.onThemThongTin += new EventHandler(ThemChiTietHocVien);
+            ucBaseControl1.onXoaThongTin += new EventHandler(XoaChiTietHocVien);
+            ucBaseControl1.onSuaThongTin += new EventHandler(CapNhatChiTietHocVien);
+        }
+
+        void ThemChiTietHocVien(object sender, EventArgs e)
+        {
+            UserForm.StudentDetailt.ChiTietHocVien frm1 = new UserForm.StudentDetailt.ChiTietHocVien();
+            frm1.ShowDialog();
+            LoadStudentDetailt();
+        }
+
+        void CapNhatChiTietHocVien(object sender, EventArgs e)
+        {
+            StudentDetailtObjects obj = new StudentDetailtObjects
+            {
+                StdId = (Guid)grdStudentDetailt.GetFocusedRowCellValue("StdId"),
+                StudetId = (Guid)grdStudentDetailt.GetFocusedRowCellValue("StudetId"),
+                CoId = (Guid)grdStudentDetailt.GetFocusedRowCellValue("CoId"),
+                Description = "" + grdStudentDetailt.GetFocusedRowCellValue("Description")                
+            };
+
+            UserForm.StudentDetailt.ChiTietHocVien frm1 = new UserForm.StudentDetailt.ChiTietHocVien(obj);
+            frm1.ShowDialog();
+            LoadStudentDetailt();
+        }
+
+        void XoaChiTietHocVien(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("Sure", "Deleted StudentDetail", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                StudentDetailtObjects obj = new StudentDetailtObjects
+                {
+                    StdId = (Guid)grdStudentDetailt.GetFocusedRowCellValue("StdId")
+                };
+                StudentDetailtBCL mStudentDetailBCL = new StudentDetailtBCL();
+                mStudentDetailBCL.Delete(obj.StdId);
+                MessageBox.Show("Xóa Chi tiết Học viên thành công!");
+                LoadStudentDetailt();
+            }
+
+            LoadStudentDetailt();
+        }
+
+       
+
+        void LoadStudentDetailt()
+        {
+            StudentDetailtBCL mStudentDetailtBCL = new StudentDetailtBCL();
+            grcStudentDetailt.DataSource = mStudentDetailtBCL.GetAll();
+        }
+
+        private void UcStudentDetailt_Load(object sender, EventArgs e)
+        {
+            LoadStudentDetailt();
+        }
+    }
+}

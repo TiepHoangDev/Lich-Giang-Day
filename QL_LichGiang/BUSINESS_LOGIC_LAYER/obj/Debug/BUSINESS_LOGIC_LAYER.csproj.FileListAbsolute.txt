@@ -1,0 +1,11 @@
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\BUSINESS_LOGIC_LAYER.dll
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\BUSINESS_LOGIC_LAYER.pdb
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\BUSINESS_OBJECT.dll
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\DATA_ACCESS_LAYER.dll
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\BUSINESS_OBJECT.pdb
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\DATA_ACCESS_LAYER.pdb
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\obj\Debug\BUSINESS_LOGIC_LAYER.csprojResolveAssemblyReference.cache
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\obj\Debug\BUSINESS_LOGIC_LAYER.dll
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_LOGIC_LAYER\obj\Debug\BUSINESS_LOGIC_LAYER.pdb

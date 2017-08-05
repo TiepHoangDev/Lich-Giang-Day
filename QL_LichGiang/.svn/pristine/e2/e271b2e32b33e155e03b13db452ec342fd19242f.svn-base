@@ -1,0 +1,140 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcSchedulers
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcSchedulers = new DevExpress.XtraGrid.GridControl();
+            this.grdSchedulers = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ScId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.WeId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ShiftId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CoId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grcSchedulers)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSchedulers)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(652, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcSchedulers
+            // 
+            this.grcSchedulers.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcSchedulers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcSchedulers.Location = new System.Drawing.Point(0, 65);
+            this.grcSchedulers.MainView = this.grdSchedulers;
+            this.grcSchedulers.Name = "grcSchedulers";
+            this.grcSchedulers.Size = new System.Drawing.Size(652, 331);
+            this.grcSchedulers.TabIndex = 1;
+            this.grcSchedulers.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdSchedulers});
+            this.grcSchedulers.Load += new System.EventHandler(this.grcSchedulers_Load);
+            // 
+            // grdSchedulers
+            // 
+            this.grdSchedulers.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.ScId,
+            this.WeId,
+            this.ShiftId,
+            this.CoId,
+            this.Description});
+            this.grdSchedulers.GridControl = this.grcSchedulers;
+            this.grdSchedulers.Name = "grdSchedulers";
+            // 
+            // ScId
+            // 
+            this.ScId.Caption = "ScId";
+            this.ScId.FieldName = "ScId";
+            this.ScId.Name = "ScId";
+            this.ScId.Visible = true;
+            this.ScId.VisibleIndex = 0;
+            // 
+            // WeId
+            // 
+            this.WeId.Caption = "WeName";
+            this.WeId.FieldName = "WeName";
+            this.WeId.Name = "WeId";
+            this.WeId.Visible = true;
+            this.WeId.VisibleIndex = 1;
+            // 
+            // ShiftId
+            // 
+            this.ShiftId.Caption = "ShiftName";
+            this.ShiftId.FieldName = "ShiftName";
+            this.ShiftId.Name = "ShiftId";
+            this.ShiftId.Visible = true;
+            this.ShiftId.VisibleIndex = 2;
+            // 
+            // CoId
+            // 
+            this.CoId.Caption = "CourseName";
+            this.CoId.FieldName = "CourseName";
+            this.CoId.Name = "CoId";
+            this.CoId.Visible = true;
+            this.CoId.VisibleIndex = 3;
+            // 
+            // Description
+            // 
+            this.Description.Caption = "Description";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 4;
+            // 
+            // UcSchedulers
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcSchedulers);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcSchedulers";
+            this.Size = new System.Drawing.Size(652, 396);
+            ((System.ComponentModel.ISupportInitialize)(this.grcSchedulers)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdSchedulers)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcSchedulers;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdSchedulers;
+        private DevExpress.XtraGrid.Columns.GridColumn ScId;
+        private DevExpress.XtraGrid.Columns.GridColumn WeId;
+        private DevExpress.XtraGrid.Columns.GridColumn ShiftId;
+        private DevExpress.XtraGrid.Columns.GridColumn CoId;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
+    }
+}

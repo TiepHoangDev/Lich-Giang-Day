@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+namespace QL_LICHGIANGDAY.UserControll
+{
+    public partial class UcAccount : DevExpress.XtraEditors.XtraUserControl
+    {
+        public UcAccount()
+        {
+            InitializeComponent();
+            ucBaseControl1.onThemThongTin += new EventHandler(ucBaseControl1_onThemThongTin);
+            ucBaseControl1.onSuaThongTin += new EventHandler(ucBaseControl1_onSuaThongTin);
+            ucBaseControl1.onXoaThongTin += new EventHandler(ucBaseControl1_onXoaThongTin);
+        }
+        void ucBaseControl1_onXoaThongTin(object sender, EventArgs e)
+        {
+            var ID = Guid.Parse("" + gridView1.GetFocusedRowCellValue("UserId"));
+            DialogResult obj = MessageBox.Show("Bạn muốn xóa không?",
+                "chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (obj == DialogResult.Yes)
+            {
+                var x = new AccountBCL().Delete(ID);
+                Load_DataCourses();
+                MessageBox.Show(string.Format("Bạn đã xóa {0}", x ? "thành công" : "thất bại"));
+            }
+        }
+
+        void ucBaseControl1_onSuaThongTin(object sender, EventArgs e)
+        {
+            AccountObject objCoursesEntity = (AccountObject)gridView1.GetFocusedRow();
+            UserForm.Account.UsEditAccount frm = new UserForm.Account.UsEditAccount(objCoursesEntity.UserId);
+            frm.ShowDialog();
+            Load_DataCourses();
+        }
+
+        void ucBaseControl1_onThemThongTin(object sender, EventArgs e)
+        {
+            UserForm.Account.UsAddAccount frm = new UserForm.Account.UsAddAccount();
+            frm.ShowDialog();
+            Load_DataCourses();
+        }
+
+        private void gridControl1_Load(object sender, EventArgs e)
+        {
+            Load_DataCourses();
+        }
+        void Load_DataCourses()
+        {
+            gridControl1.DataSource = new AccountBCL().GetAll();
+            uluCV.DataSource = new RoleBCL().GetAll();
+        }
+
+    }
+}

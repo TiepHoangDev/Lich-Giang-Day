@@ -1,0 +1,83 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcExperts
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcExperts = new DevExpress.XtraGrid.GridControl();
+            this.grdExperts = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grcExperts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdExperts)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(692, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcExperts
+            // 
+            this.grcExperts.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcExperts.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcExperts.Location = new System.Drawing.Point(0, 65);
+            this.grcExperts.MainView = this.grdExperts;
+            this.grcExperts.Name = "grcExperts";
+            this.grcExperts.Size = new System.Drawing.Size(692, 348);
+            this.grcExperts.TabIndex = 1;
+            this.grcExperts.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdExperts});
+            // 
+            // grdExperts
+            // 
+            this.grdExperts.GridControl = this.grcExperts;
+            this.grdExperts.Name = "grdExperts";
+            // 
+            // UcExperts
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcExperts);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcExperts";
+            this.Size = new System.Drawing.Size(692, 413);
+            ((System.ComponentModel.ISupportInitialize)(this.grcExperts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdExperts)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcExperts;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdExperts;
+    }
+}

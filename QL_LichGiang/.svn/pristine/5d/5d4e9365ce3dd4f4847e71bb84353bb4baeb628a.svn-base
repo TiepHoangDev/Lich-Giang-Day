@@ -1,0 +1,84 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcShiftDay
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcShiftDay = new DevExpress.XtraGrid.GridControl();
+            this.grdShiftDay = new DevExpress.XtraGrid.Views.Grid.GridView();
+            ((System.ComponentModel.ISupportInitialize)(this.grcShiftDay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdShiftDay)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(671, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcShiftDay
+            // 
+            this.grcShiftDay.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcShiftDay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcShiftDay.Location = new System.Drawing.Point(0, 65);
+            this.grcShiftDay.MainView = this.grdShiftDay;
+            this.grcShiftDay.Name = "grcShiftDay";
+            this.grcShiftDay.Size = new System.Drawing.Size(671, 352);
+            this.grcShiftDay.TabIndex = 1;
+            this.grcShiftDay.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdShiftDay});
+            this.grcShiftDay.Load += new System.EventHandler(this.grcShiftDay_Load);
+            // 
+            // grdShiftDay
+            // 
+            this.grdShiftDay.GridControl = this.grcShiftDay;
+            this.grdShiftDay.Name = "grdShiftDay";
+            // 
+            // UcShiftDay
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcShiftDay);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcShiftDay";
+            this.Size = new System.Drawing.Size(671, 417);
+            ((System.ComponentModel.ISupportInitialize)(this.grcShiftDay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdShiftDay)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcShiftDay;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdShiftDay;
+    }
+}

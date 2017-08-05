@@ -1,0 +1,85 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+
+namespace QL_LICHGIANGDAY.UserControll
+{
+    public partial class UcStudent : UserControl
+    {
+        private StudentBCL obj = new StudentBCL();
+        public UcStudent()
+        {
+            InitializeComponent();
+            ucBaseControl1.onThemThongTin += new EventHandler(ThemHocVien);
+            ucBaseControl1.onXoaThongTin += new EventHandler(XoaHocVien);
+            ucBaseControl1.onSuaThongTin += new EventHandler(CapNhatHocVien);
+        }
+
+        void ThemHocVien(object sender, EventArgs e)
+        {
+            UserForm.Student.ThongTinHocVien frm1 = new UserForm.Student.ThongTinHocVien();
+            frm1.ShowDialog();
+            LoadStudent();
+        }
+
+        void CapNhatHocVien(object sender, EventArgs e)
+        {
+            StudentObjects objStudent = new StudentObjects
+            {
+                StudetId = (Guid)grdStudent.GetFocusedRowCellValue("StudetId"),
+                FullName = "" + grdStudent.GetFocusedRowCellValue("FullName"),
+                Email = "" + grdStudent.GetFocusedRowCellValue("Email"),
+                Mobile = "" + grdStudent.GetFocusedRowCellValue("Mobile"),
+                Address = "" + grdStudent.GetFocusedRowCellValue("Address"),
+                Status = (bool)grdStudent.GetFocusedRowCellValue("Status"),
+                Deleted = (bool)grdStudent.GetFocusedRowCellValue("Deleted")
+            };
+
+            UserForm.Student.ThongTinHocVien frm1 = new UserForm.Student.ThongTinHocVien(objStudent);
+            frm1.ShowDialog();
+            LoadStudent();
+        }
+
+        void XoaHocVien(object sender, EventArgs e)
+        {
+            StudentObjects objStudent = new StudentObjects
+            {
+                StudetId = (Guid)grdStudent.GetFocusedRowCellValue("StudetId")
+            };
+            DialogResult dialogResult = MessageBox.Show("Sure", "Delete Student", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                
+                StudentBCL mStudentBCL = new StudentBCL();
+                mStudentBCL.Delete(objStudent.StudetId);
+                MessageBox.Show("Xóa Học viên thành công!");
+                LoadStudent();
+            }
+            
+            LoadStudent();
+        }
+
+        private void UcStudent_Load(object sender, EventArgs e)
+        {
+            LoadStudent();
+        }
+
+        void LoadStudent()
+        {
+            StudentBCL mStudentBCL = new StudentBCL();
+            grcStudent.DataSource = mStudentBCL.GetAll();
+        }
+
+
+       
+    }
+}

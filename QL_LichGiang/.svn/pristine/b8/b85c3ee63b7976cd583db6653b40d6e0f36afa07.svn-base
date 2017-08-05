@@ -1,0 +1,71 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+namespace QL_LICHGIANGDAY.UserForm.Account
+{
+    public partial class UsAddAccount : DevExpress.XtraEditors.XtraForm
+    {
+        public UsAddAccount()
+        {
+            InitializeComponent();
+        }
+
+        private void UsAddAccount_Load(object sender, EventArgs e)
+        {
+            lookUpEdit_RoleID.Properties.DataSource = new AccountBCL().GetAll();
+            lookUpEdit_RoleID.Properties.DisplayMember = "RName";
+            lookUpEdit_RoleID.Properties.ValueMember = "RoleId";
+        }
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) MessageBox.Show("Không để rỗng Email.", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            else if (string.IsNullOrWhiteSpace(txtFullName.Text)) MessageBox.Show("Không để rỗng Họ tên ", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            else if (string.IsNullOrWhiteSpace(txtPhone.Text)) MessageBox.Show("Không để rỗng Số điện thoại ", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            else if (string.IsNullOrWhiteSpace(txtPassword.Text)) MessageBox.Show("Không để rỗng Mật khẩu ", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            else if (lookUpEdit_RoleID.EditValue == null) MessageBox.Show("Không để rỗng Chức vụ ", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            else if (string.IsNullOrWhiteSpace(txtUsername.Text)) MessageBox.Show("Không để rỗng Tên đăng nhập", "Chú ý", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            else
+            {
+                var data = new AccountBCL().Insert(new AccountObject()
+                {
+                    Description = rtbDescription.Text,
+                    Email = txtEmail.Text,
+                    FullName = txtFullName.Text,
+                    Isdeleted = false,
+                    PassWord = txtPassword.Text,
+                    Phone = txtPhone.Text,
+                    RoleId = (Guid)lookUpEdit_RoleID.EditValue,
+                    UserId = Guid.NewGuid(),
+                    Username = txtUsername.Text
+                });
+                if (data == true)
+                {
+                    MessageBox.Show("Thêm Tài khoản thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = System.Windows.Forms.DialogResult.Yes;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Thêm Tài khoản thất bại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = System.Windows.Forms.DialogResult.No;
+            this.Close();
+        }
+    }
+}

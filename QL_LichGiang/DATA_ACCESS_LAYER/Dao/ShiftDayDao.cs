@@ -1,0 +1,63 @@
+
+using BUSINESS_OBJECT.Objects;
+using System;
+using System.Collections.Generic;
+using DATA_ACCESS_LAYER.DataModels;
+namespace DATA_ACCESS_LAYER.Dao
+{
+    public class ShiftDayDao
+    {
+
+        public bool Insert(ShiftDayObjects ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            var data = db.sp_tbl_S07_ShiftDay_INSERT(ob.ShiftId, ob.ShiftName, ob.Description);
+            return true;
+        }
+
+
+        public bool Update(ShiftDayObjects ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            var data = db.sp_tbl_S07_ShiftDay_UPDATE(ob.ShiftId, ob.ShiftName, ob.Description);
+            return true;
+        }
+
+
+        public List<ShiftDayObjects> GetAll()
+        {
+            List<ShiftDayObjects> lst = new List<ShiftDayObjects>();
+            var db = new eTrainingScheduleEntities();
+            var list = db.sp_tbl_S07_ShiftDay_GetAll();
+            foreach (var item in list)
+            {
+                ShiftDayObjects ob = new ShiftDayObjects();
+                ob.ShiftId = item.ShiftId; ob.ShiftName = item.ShiftName; ob.Description = item.Description;
+                lst.Add(ob);
+            }
+            return lst;
+        }
+
+
+        public ShiftDayObjects GetByShiftId(Guid ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            var list = db.sp_tbl_S07_ShiftDay_GetByShiftId(ob);
+            ShiftDayObjects obj = new ShiftDayObjects();
+            foreach (var item in list)
+            {
+                obj.ShiftId = item.ShiftId; obj.ShiftName = item.ShiftName; obj.Description = item.Description;
+            }
+            return obj;
+        }
+
+
+        public bool Delete(Guid ID)
+        {
+            var db = new eTrainingScheduleEntities();
+            var data = db.sp_tbl_S07_ShiftDay_DELETE(ID);
+            return true;
+        }
+
+    }
+}

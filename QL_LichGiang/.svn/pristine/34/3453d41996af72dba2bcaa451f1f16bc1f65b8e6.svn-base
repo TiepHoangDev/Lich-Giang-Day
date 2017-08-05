@@ -1,0 +1,163 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcCourses
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcCourses = new DevExpress.XtraGrid.GridControl();
+            this.grdCourses = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.CourseId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CourseName = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TotalNumber = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.StartDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.EndDate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Status = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grcCourses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(784, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            this.ucBaseControl1.Load += new System.EventHandler(this.ucBaseControl1_Load);
+            // 
+            // grcCourses
+            // 
+            this.grcCourses.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcCourses.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcCourses.Location = new System.Drawing.Point(0, 65);
+            this.grcCourses.MainView = this.grdCourses;
+            this.grcCourses.Name = "grcCourses";
+            this.grcCourses.Size = new System.Drawing.Size(784, 398);
+            this.grcCourses.TabIndex = 1;
+            this.grcCourses.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdCourses});
+            this.grcCourses.Load += new System.EventHandler(this.grcCourses_Load);
+            // 
+            // grdCourses
+            // 
+            this.grdCourses.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.CourseId,
+            this.CourseName,
+            this.TotalNumber,
+            this.StartDate,
+            this.EndDate,
+            this.Status,
+            this.Description});
+            this.grdCourses.GridControl = this.grcCourses;
+            this.grdCourses.Name = "grdCourses";
+            // 
+            // CourseId
+            // 
+            this.CourseId.Caption = "Mã khóa học";
+            this.CourseId.FieldName = "CourseId";
+            this.CourseId.Name = "CourseId";
+            this.CourseId.Visible = true;
+            this.CourseId.VisibleIndex = 0;
+            // 
+            // CourseName
+            // 
+            this.CourseName.Caption = "Tên khóa học";
+            this.CourseName.FieldName = "CourseName";
+            this.CourseName.Name = "CourseName";
+            this.CourseName.Visible = true;
+            this.CourseName.VisibleIndex = 1;
+            // 
+            // TotalNumber
+            // 
+            this.TotalNumber.Caption = "Số lượng học viên";
+            this.TotalNumber.FieldName = "TotalNumber";
+            this.TotalNumber.Name = "TotalNumber";
+            this.TotalNumber.Visible = true;
+            this.TotalNumber.VisibleIndex = 2;
+            // 
+            // StartDate
+            // 
+            this.StartDate.Caption = "Ngày khai giảng";
+            this.StartDate.FieldName = "StartDate";
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Visible = true;
+            this.StartDate.VisibleIndex = 3;
+            // 
+            // EndDate
+            // 
+            this.EndDate.Caption = "Ngày kết thúc";
+            this.EndDate.FieldName = "EndDate";
+            this.EndDate.Name = "EndDate";
+            this.EndDate.Visible = true;
+            this.EndDate.VisibleIndex = 4;
+            // 
+            // Status
+            // 
+            this.Status.Caption = "Status";
+            this.Status.FieldName = "Status";
+            this.Status.Name = "Status";
+            this.Status.Visible = true;
+            this.Status.VisibleIndex = 6;
+            // 
+            // Description
+            // 
+            this.Description.Caption = "Mô tả";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 5;
+            // 
+            // UcCourses
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcCourses);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcCourses";
+            this.Size = new System.Drawing.Size(784, 463);
+            ((System.ComponentModel.ISupportInitialize)(this.grcCourses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCourses)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private QL_LICHGIANGDAY.UserControll.UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcCourses;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdCourses;
+        private DevExpress.XtraGrid.Columns.GridColumn CourseId;
+        private DevExpress.XtraGrid.Columns.GridColumn CourseName;
+        private DevExpress.XtraGrid.Columns.GridColumn TotalNumber;
+        private DevExpress.XtraGrid.Columns.GridColumn StartDate;
+        private DevExpress.XtraGrid.Columns.GridColumn EndDate;
+        private DevExpress.XtraGrid.Columns.GridColumn Status;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
+    }
+}

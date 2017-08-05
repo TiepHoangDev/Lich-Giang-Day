@@ -1,0 +1,126 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraBars;
+
+// ------ THEME -----------------------------------------------------------// 
+
+//1. Khai báo không gian thư viện (dùng cho Theme)
+using DevExpress.XtraBars.Localization;
+using DevExpress.XtraBars.Helpers;
+
+// ------ THEME -----------------------------------------------------------// 
+
+// ------ XTRATABCONTROL -----------------------------------------------------------// 
+
+//1. Khai báo không gian tên sử dụng cho xTraTabControl
+using DevExpress.XtraTab;
+using DevExpress.XtraTab.ViewInfo;
+
+// ------ XTRATABCONTROL -----------------------------------------------------------// 
+
+
+namespace QL_LICHGIANGDAY
+{
+    public partial class frmMAINAPPS : DevExpress.XtraBars.Ribbon.RibbonForm
+    {
+        //2. Khai báo đối tượng của XtraTabPage
+        private XtraTabPage xtraTab_Student;//HocVien
+        public frmMAINAPPS()
+        {
+            InitializeComponent();
+            //3. Khởi tạo đối tượng XTRATAB
+            xtraTab_Student = new XtraTabPage();//ExtraTab HocVien
+        }
+  
+   // ------ THEME -----------------------------------------------------------// 
+        //2. Thiết lập tùy biến giao diện Theme
+        public class MyBarLocalizer : BarLocalizer //Theme
+        {
+            public override string GetLocalizedString(BarString id)
+            {
+                if (id == BarString.SkinCaptions)
+                {
+                    //Default value for BarString.SkinCaptions:                    
+                    //"|DevExpress Style|Caramel|Money Twins|DevExpress Dark Style|iMaginary|Lilian|Black|Blue|Office 2010 Blue|Office 2010 Black|Office 2010 Silver|Office 2007 Blue|Office 2007 Black|Office 2007 Silver|Office 2007 Green|Office 2007 Pink|Seven|Seven Classic|Darkroom|McSkin|Sharp|Sharp Plus|Foggy|Dark Side|Xmas (Blue)|Springtime|Summer|Pumpkin|Valentine|Stardust|Coffee|Glass Oceans|High Contrast|Liquid Sky|London Liquid Sky|The Asphalt World|Blueprint|"
+                    string defaultSkinCaptions = base.GetLocalizedString(id);
+                    string newSkinCaptions = defaultSkinCaptions.
+                        Replace("|DevExpress Style|", "|My Favorite Skin|");
+                    return newSkinCaptions;
+                }
+                return base.GetLocalizedString(id);
+            }
+        }
+
+  // ------ THEME -----------------------------------------------------------// 
+
+        private void frmMAINAPPS_Load(object sender, EventArgs e)
+        {
+          // ------ THEME -----------------------------------------------------------// 
+            //3. Ra ngoài giao diện add vào 1 control có tên: RibbonGalleryBarItem
+            //4. Thêm vào Main Form 1 control có tên: PopupMenu
+            //5. Thiết lập tùy biến giao diện
+            BarLocalizer.Active = new MyBarLocalizer();
+            SkinHelper.InitSkinGallery(ribbonGalleryBarItem1, true);
+            SkinHelper.InitSkinPopupMenu(popupMenu1);
+          // ------ THEME -----------------------------------------------------------// 
+        }
+
+        // XTRATAB_STUDENT //
+        public void LoadXtra_Student()  //Tạo tab Học Viên
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                if (xTCMainTabControl.TabPages.Contains(xtraTab_Student))
+                {
+                    xTCMainTabControl.TabPages.Remove(xtraTab_Student);
+                }
+                xtraTab_Student = new XtraTabPage();
+                xTCMainTabControl.TabPages.Add(xtraTab_Student);
+                xtraTab_Student.Text = "Quản lý Học Viên";
+                xTCMainTabControl.Images = imageList1;
+                xtraTab_Student.ImageIndex = 8;
+                xTCMainTabControl.SelectedTabPage = xtraTab_Student;
+                UserControll.UcCourses objUcCourses = new UserControll.UcCourses();
+                xtraTab_Student.Controls.Add(objUcCourses);
+                objUcCourses.Dock = DockStyle.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Có lỗi xảy ra. Chi tiết: " + ex.Message);
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+
+        private void nBIHocVien_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            LoadXtra_Student();
+        }
+        // XTRATAB_STUDENT //
+
+        // ĐÓNG TAB
+        private void xTCMainTabControl_CloseButtonClick(object sender, EventArgs e)
+        {
+            ClosePageButtonEventArgs arg = e as ClosePageButtonEventArgs;
+            if (arg != null)
+            {
+                xTCMainTabControl.TabPages.Remove(arg.Page as XtraTabPage);
+                //if (arg.Page.Text.Equals("Quản lý nhân viên"))               
+                //    LoadXtraStartPage();//Quản Lý Nhân viên                        
+            }
+        }
+        
+        // ĐÓNG TAB
+     
+    }
+}

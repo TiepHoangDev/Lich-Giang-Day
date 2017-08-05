@@ -1,0 +1,192 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcPermisstion
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.trVEmployee = new System.Windows.Forms.TreeView();
+            this.grCUserID = new DevExpress.XtraGrid.GridControl();
+            this.grDUserID = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.F_ADD = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.F_EDIT = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.F_SEARCH = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.FeaId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.uluPQ = new DevExpress.XtraEditors.LookUpEdit();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grCUserID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grDUserID)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uluPQ.Properties)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // trVEmployee
+            // 
+            this.trVEmployee.Dock = System.Windows.Forms.DockStyle.Left;
+            this.trVEmployee.Location = new System.Drawing.Point(0, 0);
+            this.trVEmployee.Name = "trVEmployee";
+            this.trVEmployee.Size = new System.Drawing.Size(231, 507);
+            this.trVEmployee.TabIndex = 0;
+            this.trVEmployee.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trVEmployee_AfterSelect);
+            // 
+            // grCUserID
+            // 
+            this.grCUserID.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grCUserID.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.grCUserID.Location = new System.Drawing.Point(231, 47);
+            this.grCUserID.MainView = this.grDUserID;
+            this.grCUserID.Name = "grCUserID";
+            this.grCUserID.Size = new System.Drawing.Size(619, 460);
+            this.grCUserID.TabIndex = 1;
+            this.grCUserID.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grDUserID});
+            this.grCUserID.Load += new System.EventHandler(this.grCUserID_Load);
+            // 
+            // grDUserID
+            // 
+            this.grDUserID.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.F_ADD,
+            this.F_EDIT,
+            this.F_SEARCH,
+            this.FeaId,
+            this.gridColumn1});
+            this.grDUserID.GridControl = this.grCUserID;
+            this.grDUserID.Name = "grDUserID";
+            this.grDUserID.CellValueChanged += new DevExpress.XtraGrid.Views.Base.CellValueChangedEventHandler(this.grDUserID_CellValueChanged);
+            // 
+            // F_ADD
+            // 
+            this.F_ADD.Caption = "Thêm";
+            this.F_ADD.FieldName = "F_ADD";
+            this.F_ADD.Name = "F_ADD";
+            this.F_ADD.Visible = true;
+            this.F_ADD.VisibleIndex = 1;
+            // 
+            // F_EDIT
+            // 
+            this.F_EDIT.Caption = "Sửa";
+            this.F_EDIT.FieldName = "F_EDIT";
+            this.F_EDIT.Name = "F_EDIT";
+            this.F_EDIT.Visible = true;
+            this.F_EDIT.VisibleIndex = 2;
+            // 
+            // F_SEARCH
+            // 
+            this.F_SEARCH.Caption = "Tìm Kiếm";
+            this.F_SEARCH.FieldName = "F_SEARCH";
+            this.F_SEARCH.Name = "F_SEARCH";
+            this.F_SEARCH.Visible = true;
+            this.F_SEARCH.VisibleIndex = 4;
+            // 
+            // FeaId
+            // 
+            this.FeaId.Caption = "Chức năng";
+            this.FeaId.FieldName = "FeaId";
+            this.FeaId.Name = "FeaId";
+            this.FeaId.Visible = true;
+            this.FeaId.VisibleIndex = 0;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.panel1);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelControl1.Location = new System.Drawing.Point(231, 0);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(619, 49);
+            this.panelControl1.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.uluPQ);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(2, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(615, 45);
+            this.panel1.TabIndex = 0;
+            // 
+            // uluPQ
+            // 
+            this.uluPQ.Location = new System.Drawing.Point(17, 14);
+            this.uluPQ.Name = "uluPQ";
+            this.uluPQ.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uluPQ.Properties.Appearance.Options.UseFont = true;
+            this.uluPQ.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.uluPQ.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("FeaName", 200, "Chức Năng Nghiệp Vụ")});
+            this.uluPQ.Properties.DisplayMember = "FeaName";
+            this.uluPQ.Properties.NullText = "----------------  CHỨC NĂNG NGHIỆP VỤ ----------------";
+            this.uluPQ.Size = new System.Drawing.Size(339, 22);
+            this.uluPQ.TabIndex = 0;
+            this.uluPQ.EditValueChanged += new System.EventHandler(this.uluPQ_EditValueChanged);
+            this.uluPQ.Click += new System.EventHandler(this.uluPQ_Click);
+            // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Xóa";
+            this.gridColumn1.FieldName = "F_DELETE";
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 3;
+            // 
+            // UcPermisstion
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.panelControl1);
+            this.Controls.Add(this.grCUserID);
+            this.Controls.Add(this.trVEmployee);
+            this.Name = "UcPermisstion";
+            this.Size = new System.Drawing.Size(850, 507);
+            ((System.ComponentModel.ISupportInitialize)(this.grCUserID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grDUserID)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.uluPQ.Properties)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.TreeView trVEmployee;
+        private DevExpress.XtraGrid.GridControl grCUserID;
+        private DevExpress.XtraGrid.Views.Grid.GridView grDUserID;
+        private DevExpress.XtraGrid.Columns.GridColumn F_ADD;
+        private DevExpress.XtraGrid.Columns.GridColumn F_EDIT;
+        private DevExpress.XtraGrid.Columns.GridColumn F_SEARCH;
+        private DevExpress.XtraGrid.Columns.GridColumn FeaId;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private System.Windows.Forms.Panel panel1;
+        private DevExpress.XtraEditors.LookUpEdit uluPQ;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+    }
+}

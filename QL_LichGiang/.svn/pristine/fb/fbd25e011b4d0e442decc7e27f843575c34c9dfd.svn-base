@@ -1,0 +1,61 @@
+
+using BUSINESS_OBJECT.Objects;
+using System;
+using System.Collections.Generic;
+using DATA_ACCESS_LAYER.DataModels;
+namespace DATA_ACCESS_LAYER.Dao
+{
+    public class RoleDao
+    {
+
+        public bool Insert(RoleObject ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            return db.sp_tbl_Role_INSERT(ob.RoleId, ob.RName, ob.Isdeleted) > 0;
+        }
+
+
+        public bool Update(RoleObject ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            return db.sp_tbl_Role_UPDATE(ob.RoleId, ob.RName, ob.Isdeleted) > 0;
+        }
+
+
+        public List<RoleObject> GetAll()
+        {
+            List<RoleObject> lst = new List<RoleObject>();
+            var db = new eTrainingScheduleEntities();
+            var list = db.sp_tbl_Role_GetAll();
+            foreach (var item in list)
+            {
+                RoleObject ob = new RoleObject();
+                ob.RoleId = item.RoleId; ob.RName = item.RName; ob.Isdeleted = item.Isdeleted;
+                lst.Add(ob);
+            }
+            return lst;
+        }
+
+
+        public RoleObject GetByRoleId(RoleObject ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            var list = db.sp_tbl_Role_GetByRoleId(ob.RoleId);
+            RoleObject obj = new RoleObject();
+            foreach (var item in list)
+            {
+                obj.RoleId = item.RoleId; obj.RName = item.RName; obj.Isdeleted = item.Isdeleted;
+            }
+            return obj;
+        }
+
+
+        public bool Delete(RoleObject ob)
+        {
+            var db = new eTrainingScheduleEntities();
+            return db.sp_tbl_Role_DELETE(ob.RoleId) > 0;
+        }
+
+
+    }
+}

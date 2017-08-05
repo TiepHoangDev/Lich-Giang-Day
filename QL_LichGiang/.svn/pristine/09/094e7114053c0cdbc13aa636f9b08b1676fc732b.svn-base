@@ -1,0 +1,216 @@
+﻿namespace QL_LICHGIANGDAY.UserForm.StudentDetailt
+{
+    partial class ChiTietHocVien
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChiTietHocVien));
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.cboMaKhoaHoc = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cboMaHocVien = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.btnDong = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCapNhat = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThemMoi = new DevExpress.XtraEditors.SimpleButton();
+            this.txtMota = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtMaChiTietHocVien = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboMaKhoaHoc.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboMaHocVien.Properties)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.CaptionImage = ((System.Drawing.Image)(resources.GetObject("groupControl1.CaptionImage")));
+            this.groupControl1.Controls.Add(this.txtMaChiTietHocVien);
+            this.groupControl1.Controls.Add(this.cboMaKhoaHoc);
+            this.groupControl1.Controls.Add(this.cboMaHocVien);
+            this.groupControl1.Controls.Add(this.btnDong);
+            this.groupControl1.Controls.Add(this.btnCapNhat);
+            this.groupControl1.Controls.Add(this.btnThemMoi);
+            this.groupControl1.Controls.Add(this.txtMota);
+            this.groupControl1.Controls.Add(this.label4);
+            this.groupControl1.Controls.Add(this.label1);
+            this.groupControl1.Controls.Add(this.label3);
+            this.groupControl1.Controls.Add(this.label2);
+            this.groupControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupControl1.Location = new System.Drawing.Point(0, 0);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(457, 331);
+            this.groupControl1.TabIndex = 2;
+            this.groupControl1.Text = "Mời thêm hoặc cập nhật thông tin ";
+            this.groupControl1.Enter += new System.EventHandler(this.groupControl1_Enter);
+            // 
+            // cboMaKhoaHoc
+            // 
+            this.cboMaKhoaHoc.Location = new System.Drawing.Point(127, 124);
+            this.cboMaKhoaHoc.Name = "cboMaKhoaHoc";
+            this.cboMaKhoaHoc.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboMaKhoaHoc.Size = new System.Drawing.Size(320, 20);
+            this.cboMaKhoaHoc.TabIndex = 1;
+            // 
+            // cboMaHocVien
+            // 
+            this.cboMaHocVien.Location = new System.Drawing.Point(127, 89);
+            this.cboMaHocVien.Name = "cboMaHocVien";
+            this.cboMaHocVien.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cboMaHocVien.Size = new System.Drawing.Size(320, 20);
+            this.cboMaHocVien.TabIndex = 0;
+            // 
+            // btnDong
+            // 
+            this.btnDong.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnDong.Appearance.Options.UseFont = true;
+            this.btnDong.Appearance.Options.UseForeColor = true;
+            this.btnDong.Image = ((System.Drawing.Image)(resources.GetObject("btnDong.Image")));
+            this.btnDong.Location = new System.Drawing.Point(347, 287);
+            this.btnDong.Name = "btnDong";
+            this.btnDong.Size = new System.Drawing.Size(100, 35);
+            this.btnDong.TabIndex = 5;
+            this.btnDong.Text = "Đóng";
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhat.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnCapNhat.Appearance.Options.UseFont = true;
+            this.btnCapNhat.Appearance.Options.UseForeColor = true;
+            this.btnCapNhat.Image = ((System.Drawing.Image)(resources.GetObject("btnCapNhat.Image")));
+            this.btnCapNhat.Location = new System.Drawing.Point(237, 287);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(100, 35);
+            this.btnCapNhat.TabIndex = 4;
+            this.btnCapNhat.Text = "Cập nhập";
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
+            // 
+            // btnThemMoi
+            // 
+            this.btnThemMoi.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemMoi.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnThemMoi.Appearance.Options.UseFont = true;
+            this.btnThemMoi.Appearance.Options.UseForeColor = true;
+            this.btnThemMoi.Image = ((System.Drawing.Image)(resources.GetObject("btnThemMoi.Image")));
+            this.btnThemMoi.Location = new System.Drawing.Point(127, 287);
+            this.btnThemMoi.Name = "btnThemMoi";
+            this.btnThemMoi.Size = new System.Drawing.Size(100, 35);
+            this.btnThemMoi.TabIndex = 3;
+            this.btnThemMoi.Text = "Thêm mới";
+            this.btnThemMoi.Click += new System.EventHandler(this.btnThemMoi_Click);
+            // 
+            // txtMota
+            // 
+            this.txtMota.Location = new System.Drawing.Point(127, 159);
+            this.txtMota.Multiline = true;
+            this.txtMota.Name = "txtMota";
+            this.txtMota.Size = new System.Drawing.Size(320, 109);
+            this.txtMota.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 162);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.TabIndex = 1;
+            this.label4.Text = "- Mô tả :";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(8, 127);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "- Mã Khóa Học :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 92);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "- Mã Học Viên :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(8, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "- Mã Chi tiết Học Viên :";
+            // 
+            // txtMaChiTietHocVien
+            // 
+            this.txtMaChiTietHocVien.Enabled = false;
+            this.txtMaChiTietHocVien.Location = new System.Drawing.Point(127, 54);
+            this.txtMaChiTietHocVien.Name = "txtMaChiTietHocVien";
+            this.txtMaChiTietHocVien.Size = new System.Drawing.Size(320, 21);
+            this.txtMaChiTietHocVien.TabIndex = 6;
+            // 
+            // ChiTietHocVien
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(457, 331);
+            this.Controls.Add(this.groupControl1);
+            this.Name = "ChiTietHocVien";
+            this.Text = "CHI TIẾT HỌC VIÊN";
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
+            this.groupControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboMaKhoaHoc.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboMaHocVien.Properties)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private System.Windows.Forms.TextBox txtMota;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private DevExpress.XtraEditors.ComboBoxEdit cboMaKhoaHoc;
+        private DevExpress.XtraEditors.ComboBoxEdit cboMaHocVien;
+        private DevExpress.XtraEditors.SimpleButton btnDong;
+        private DevExpress.XtraEditors.SimpleButton btnCapNhat;
+        private DevExpress.XtraEditors.SimpleButton btnThemMoi;
+        private System.Windows.Forms.TextBox txtMaChiTietHocVien;
+        private System.Windows.Forms.Label label1;
+    }
+}

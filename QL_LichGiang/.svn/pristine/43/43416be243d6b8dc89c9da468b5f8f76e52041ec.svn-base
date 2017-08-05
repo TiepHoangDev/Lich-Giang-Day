@@ -1,0 +1,129 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcExpertsDetailt
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcExpertsDetailt = new DevExpress.XtraGrid.GridControl();
+            this.grdExpertsDetailt = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.ExId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ExpertId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.CoId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grcExpertsDetailt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdExpertsDetailt)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(695, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcExpertsDetailt
+            // 
+            this.grcExpertsDetailt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcExpertsDetailt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcExpertsDetailt.Location = new System.Drawing.Point(0, 65);
+            this.grcExpertsDetailt.MainView = this.grdExpertsDetailt;
+            this.grcExpertsDetailt.Name = "grcExpertsDetailt";
+            this.grcExpertsDetailt.Size = new System.Drawing.Size(695, 334);
+            this.grcExpertsDetailt.TabIndex = 1;
+            this.grcExpertsDetailt.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.grdExpertsDetailt});
+            // 
+            // grdExpertsDetailt
+            // 
+            this.grdExpertsDetailt.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.ExId,
+            this.ExpertId,
+            this.CoId,
+            this.Description});
+            this.grdExpertsDetailt.GridControl = this.grcExpertsDetailt;
+            this.grdExpertsDetailt.Name = "grdExpertsDetailt";
+            // 
+            // ExId
+            // 
+            this.ExId.Caption = "ExId";
+            this.ExId.FieldName = "ExId";
+            this.ExId.Name = "ExId";
+            this.ExId.Visible = true;
+            this.ExId.VisibleIndex = 0;
+            // 
+            // ExpertId
+            // 
+            this.ExpertId.Caption = "ExpertId";
+            this.ExpertId.FieldName = "ExpertId";
+            this.ExpertId.Name = "ExpertId";
+            this.ExpertId.Visible = true;
+            this.ExpertId.VisibleIndex = 1;
+            // 
+            // CoId
+            // 
+            this.CoId.Caption = "CoId";
+            this.CoId.FieldName = "CoId";
+            this.CoId.Name = "CoId";
+            this.CoId.Visible = true;
+            this.CoId.VisibleIndex = 2;
+            // 
+            // Description
+            // 
+            this.Description.Caption = "Description";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 3;
+            // 
+            // UcExpertsDetailt
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcExpertsDetailt);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcExpertsDetailt";
+            this.Size = new System.Drawing.Size(695, 399);
+            this.Load += new System.EventHandler(this.UcExpertsDetailt_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grcExpertsDetailt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdExpertsDetailt)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcExpertsDetailt;
+        private DevExpress.XtraGrid.Views.Grid.GridView grdExpertsDetailt;
+        private DevExpress.XtraGrid.Columns.GridColumn ExId;
+        private DevExpress.XtraGrid.Columns.GridColumn ExpertId;
+        private DevExpress.XtraGrid.Columns.GridColumn CoId;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
+    }
+}

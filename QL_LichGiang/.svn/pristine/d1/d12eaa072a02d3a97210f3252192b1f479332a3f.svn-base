@@ -1,0 +1,50 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using BUSINESS_LOGIC_LAYER.BCL;
+
+namespace QL_LICHGIANGDAY.UserControll
+{
+    public partial class UcSchedulers : UserControl
+    {
+        private SchedulersBCL obj = new SchedulersBCL();
+        public UcSchedulers()
+        {
+            InitializeComponent();
+            ucBaseControl1.onSuaThongTin += new EventHandler(ucBaseControl1_onSuaThongTin);
+            ucBaseControl1.onThemThongTin += new EventHandler(ucBaseControl1_onThemThongTin);
+            ucBaseControl1.onXoaThongTin += new EventHandler(ucBaseControl1_onXoaThongTin);
+        }
+
+        void ucBaseControl1_onXoaThongTin(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ucBaseControl1_onThemThongTin(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ucBaseControl1_onSuaThongTin(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void grcSchedulers_Load(object sender, EventArgs e)
+        {
+            Load_Scheduler();
+        }
+
+        private void Load_Scheduler()
+        {
+            grcSchedulers.DataSource = obj.GetAll();
+        }
+    }
+}

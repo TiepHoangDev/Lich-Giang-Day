@@ -1,0 +1,4 @@
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_OBJECT\bin\Debug\BUSINESS_OBJECT.dll
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_OBJECT\bin\Debug\BUSINESS_OBJECT.pdb
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_OBJECT\obj\Debug\BUSINESS_OBJECT.dll
+C:\Users\Admin\Desktop\HPT\imic\win form\QL_LichGiang\BUSINESS_OBJECT\obj\Debug\BUSINESS_OBJECT.pdb

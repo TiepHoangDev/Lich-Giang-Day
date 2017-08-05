@@ -1,0 +1,56 @@
+﻿using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace QL_LICHGIANGDAY.UserForm.Student
+{
+    public partial class SuaHocVien : Form
+    {
+        public StudentObjects student;
+        public SuaHocVien(StudentObjects obj)
+        {
+            InitializeComponent();
+            student = obj;
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtHoVaTen.Text)) errorProvider1.SetError(txtHoVaTen, "Dữ liệu không hợp lệ");
+            if (string.IsNullOrWhiteSpace(txtDiaChi.Text)) errorProvider1.SetError(txtDiaChi, "Dữ liệu không hợp lệ");
+            if (string.IsNullOrWhiteSpace(txtEmail.Text)) errorProvider1.SetError(txtEmail, "Dữ liệu không hợp lệ");
+            if (string.IsNullOrWhiteSpace(txtMobile.Text)) errorProvider1.SetError(txtMobile, "Dữ liệu không hợp lệ");
+            else
+            {
+                student.FullName = txtHoVaTen.Text;
+                student.Address = txtDiaChi.Text;
+                student.Email = txtEmail.Text;
+                student.Mobile = txtEmail.Text;
+                StudentBCL mStudentBCL = new StudentBCL();
+                mStudentBCL.Update(student);
+                MessageBox.Show("Cập nhật Học Viên thành công!");
+                this.Close();
+            }
+        }
+
+        private void SuaHocVien_Load(object sender, EventArgs e)
+        {
+            txtHoVaTen.Text = student.FullName;
+            txtEmail.Text = student.Email;
+            txtDiaChi.Text = student.Address;
+            txtMobile.Text = student.Mobile;
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+    }
+}

@@ -1,0 +1,161 @@
+﻿namespace QL_LICHGIANGDAY.UserControll
+{
+    partial class UcExpertsDetailt
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.ucBaseControl1 = new QL_LICHGIANGDAY.UserControll.UcBaseControl();
+            this.grcExpertsDetailt = new DevExpress.XtraGrid.GridControl();
+            this.cardView1 = new DevExpress.XtraGrid.Views.Card.CardView();
+            this.ExpertId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.uluMGV = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.CoId = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.uluMKH = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.Description = new DevExpress.XtraGrid.Columns.GridColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.grcExpertsDetailt)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uluMGV)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uluMKH)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // ucBaseControl1
+            // 
+            this.ucBaseControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ucBaseControl1.Location = new System.Drawing.Point(0, 0);
+            this.ucBaseControl1.Name = "ucBaseControl1";
+            this.ucBaseControl1.Size = new System.Drawing.Size(695, 65);
+            this.ucBaseControl1.TabIndex = 0;
+            // 
+            // grcExpertsDetailt
+            // 
+            this.grcExpertsDetailt.Cursor = System.Windows.Forms.Cursors.Default;
+            this.grcExpertsDetailt.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grcExpertsDetailt.Location = new System.Drawing.Point(0, 65);
+            this.grcExpertsDetailt.MainView = this.cardView1;
+            this.grcExpertsDetailt.Name = "grcExpertsDetailt";
+            this.grcExpertsDetailt.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.uluMGV,
+            this.uluMKH});
+            this.grcExpertsDetailt.Size = new System.Drawing.Size(695, 334);
+            this.grcExpertsDetailt.TabIndex = 1;
+            this.grcExpertsDetailt.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.cardView1});
+            // 
+            // cardView1
+            // 
+            this.cardView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.ExpertId,
+            this.CoId,
+            this.Description});
+            this.cardView1.FocusedCardTopFieldIndex = 0;
+            this.cardView1.GridControl = this.grcExpertsDetailt;
+            this.cardView1.Name = "cardView1";
+            this.cardView1.OptionsBehavior.ReadOnly = true;
+            this.cardView1.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Auto;
+            // 
+            // ExpertId
+            // 
+            this.ExpertId.Caption = "Giáo Viên";
+            this.ExpertId.ColumnEdit = this.uluMGV;
+            this.ExpertId.FieldName = "ExpertId";
+            this.ExpertId.Name = "ExpertId";
+            this.ExpertId.Visible = true;
+            this.ExpertId.VisibleIndex = 0;
+            this.ExpertId.Width = 200;
+            // 
+            // uluMGV
+            // 
+            this.uluMGV.AutoHeight = false;
+            this.uluMGV.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.uluMGV.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("ExpertId", 100, "Mã Giáo Viên"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("FullName", 100, "Tên Giáo Viên")});
+            this.uluMGV.DisplayMember = "FullName";
+            this.uluMGV.Name = "uluMGV";
+            this.uluMGV.ValueMember = "ExpertId";
+            // 
+            // CoId
+            // 
+            this.CoId.Caption = "Khóa Học";
+            this.CoId.ColumnEdit = this.uluMKH;
+            this.CoId.FieldName = "CoId";
+            this.CoId.Name = "CoId";
+            this.CoId.Visible = true;
+            this.CoId.VisibleIndex = 1;
+            this.CoId.Width = 237;
+            // 
+            // uluMKH
+            // 
+            this.uluMKH.AutoHeight = false;
+            this.uluMKH.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.uluMKH.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CoId", 100, "Mã Khóa Học"),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("CourseName", 100, "Tên Khóa Học")});
+            this.uluMKH.DisplayMember = "CourseName";
+            this.uluMKH.Name = "uluMKH";
+            this.uluMKH.ValueMember = "CoId";
+            // 
+            // Description
+            // 
+            this.Description.Caption = "Mô Tả Ngắn";
+            this.Description.FieldName = "Description";
+            this.Description.Name = "Description";
+            this.Description.Visible = true;
+            this.Description.VisibleIndex = 2;
+            this.Description.Width = 240;
+            // 
+            // UcExpertsDetailt
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.grcExpertsDetailt);
+            this.Controls.Add(this.ucBaseControl1);
+            this.Name = "UcExpertsDetailt";
+            this.Size = new System.Drawing.Size(695, 399);
+            this.Load += new System.EventHandler(this.UcExpertsDetailt_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.grcExpertsDetailt)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uluMGV)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uluMKH)).EndInit();
+            this.ResumeLayout(false);
+
+        }
+
+        #endregion
+
+        private UcBaseControl ucBaseControl1;
+        private DevExpress.XtraGrid.GridControl grcExpertsDetailt;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit uluMGV;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit uluMKH;
+        private DevExpress.XtraGrid.Views.Card.CardView cardView1;
+        private DevExpress.XtraGrid.Columns.GridColumn ExpertId;
+        private DevExpress.XtraGrid.Columns.GridColumn CoId;
+        private DevExpress.XtraGrid.Columns.GridColumn Description;
+    }
+}

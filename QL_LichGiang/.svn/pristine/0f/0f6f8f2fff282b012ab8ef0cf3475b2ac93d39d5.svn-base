@@ -1,0 +1,1570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eTrainingScheduleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_S07_Courses">
+          <Key>
+            <PropertyRef Name="CoId" />
+          </Key>
+          <Property Name="CoId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CourseId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CourseName" Type="nvarchar" MaxLength="50" />
+          <Property Name="TotalNumber" Type="tinyint" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_S07_CoursesJournal">
+          <Key>
+            <PropertyRef Name="CJId" />
+          </Key>
+          <Property Name="CJId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CoId" Type="uniqueidentifier" />
+          <Property Name="DayOf" Type="datetime" />
+          <Property Name="Contents" Type="nvarchar" MaxLength="400" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Experts">
+          <Key>
+            <PropertyRef Name="ExpertId" />
+          </Key>
+          <Property Name="ExpertId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" />
+          <Property Name="Specialize" Type="nvarchar" MaxLength="150" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_S07_ExpertsDetailt">
+          <Key>
+            <PropertyRef Name="ExId" />
+          </Key>
+          <Property Name="ExId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExpertId" Type="uniqueidentifier" />
+          <Property Name="CoId" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_S07_SchedStudentDetailt">
+          <Key>
+            <PropertyRef Name="ScsId" />
+          </Key>
+          <Property Name="ScsId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StudetId" Type="uniqueidentifier" />
+          <Property Name="ScId" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Schedulers">
+          <Key>
+            <PropertyRef Name="ScId" />
+          </Key>
+          <Property Name="ScId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WeId" Type="uniqueidentifier" />
+          <Property Name="ShiftId" Type="uniqueidentifier" />
+          <Property Name="CoId" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_S07_ShiftDay">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="ShiftId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ShiftName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Student">
+          <Key>
+            <PropertyRef Name="StudetId" />
+          </Key>
+          <Property Name="StudetId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Status" Type="bit" />
+          <Property Name="Deleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_S07_StudentDetailt">
+          <Key>
+            <PropertyRef Name="StdId" />
+          </Key>
+          <Property Name="StdId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="StudetId" Type="uniqueidentifier" />
+          <Property Name="CoId" Type="uniqueidentifier" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Weekdays">
+          <Key>
+            <PropertyRef Name="WeId" />
+          </Key>
+          <Property Name="WeId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="pk_01">
+          <End Role="tbl_S07_Experts" Type="Self.tbl_S07_Experts" Multiplicity="0..1" />
+          <End Role="tbl_S07_ExpertsDetailt" Type="Self.tbl_S07_ExpertsDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Experts">
+              <PropertyRef Name="ExpertId" />
+            </Principal>
+            <Dependent Role="tbl_S07_ExpertsDetailt">
+              <PropertyRef Name="ExpertId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_02">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_ExpertsDetailt" Type="Self.tbl_S07_ExpertsDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_ExpertsDetailt">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_03">
+          <End Role="tbl_S07_Student" Type="Self.tbl_S07_Student" Multiplicity="0..1" />
+          <End Role="tbl_S07_StudentDetailt" Type="Self.tbl_S07_StudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Student">
+              <PropertyRef Name="StudetId" />
+            </Principal>
+            <Dependent Role="tbl_S07_StudentDetailt">
+              <PropertyRef Name="StudetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_04">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_StudentDetailt" Type="Self.tbl_S07_StudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_StudentDetailt">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_05">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_CoursesJournal" Type="Self.tbl_S07_CoursesJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_CoursesJournal">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_06">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_Schedulers">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_07">
+          <End Role="tbl_S07_Weekdays" Type="Self.tbl_S07_Weekdays" Multiplicity="0..1" />
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Weekdays">
+              <PropertyRef Name="WeId" />
+            </Principal>
+            <Dependent Role="tbl_S07_Schedulers">
+              <PropertyRef Name="WeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_08">
+          <End Role="tbl_S07_ShiftDay" Type="Self.tbl_S07_ShiftDay" Multiplicity="0..1" />
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_ShiftDay">
+              <PropertyRef Name="ShiftId" />
+            </Principal>
+            <Dependent Role="tbl_S07_Schedulers">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_09">
+          <End Role="tbl_S07_Student" Type="Self.tbl_S07_Student" Multiplicity="0..1" />
+          <End Role="tbl_S07_SchedStudentDetailt" Type="Self.tbl_S07_SchedStudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Student">
+              <PropertyRef Name="StudetId" />
+            </Principal>
+            <Dependent Role="tbl_S07_SchedStudentDetailt">
+              <PropertyRef Name="StudetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_10">
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="0..1" />
+          <End Role="tbl_S07_SchedStudentDetailt" Type="Self.tbl_S07_SchedStudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Schedulers">
+              <PropertyRef Name="ScId" />
+            </Principal>
+            <Dependent Role="tbl_S07_SchedStudentDetailt">
+              <PropertyRef Name="ScId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_tbl_S07_Courses_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Courses_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_Courses_GetByCoId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Courses_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CourseId" Type="nvarchar" Mode="In" />
+          <Parameter Name="CourseName" Type="nvarchar" Mode="In" />
+          <Parameter Name="TotalNumber" Type="tinyint" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Courses_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CourseId" Type="nvarchar" Mode="In" />
+          <Parameter Name="CourseName" Type="nvarchar" Mode="In" />
+          <Parameter Name="TotalNumber" Type="tinyint" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_CoursesJournal_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CJId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_CoursesJournal_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_CoursesJournal_GetByCJId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CJId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_CoursesJournal_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CJId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DayOf" Type="datetime" Mode="In" />
+          <Parameter Name="Contents" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_CoursesJournal_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CJId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="DayOf" Type="datetime" Mode="In" />
+          <Parameter Name="Contents" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Experts_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExpertId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Experts_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_Experts_GetByExpertId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExpertId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Experts_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExpertId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Specialize" Type="nvarchar" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Experts_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExpertId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Specialize" Type="nvarchar" Mode="In" />
+          <Parameter Name="StartDate" Type="datetime" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ExpertsDetailt_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ExpertsDetailt_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_ExpertsDetailt_GetByExId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ExpertsDetailt_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ExpertId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ExpertsDetailt_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ExId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ExpertId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_SchedStudentDetailt_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScsId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_SchedStudentDetailt_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_SchedStudentDetailt_GetByScsId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScsId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_SchedStudentDetailt_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScsId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ScId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_SchedStudentDetailt_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScsId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ScId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Schedulers_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Schedulers_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_Schedulers_GetByScId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Schedulers_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="WeId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ShiftId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Schedulers_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="WeId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ShiftId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ShiftDay_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShiftId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ShiftDay_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_ShiftDay_GetByShiftId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShiftId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ShiftDay_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShiftId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ShiftName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_ShiftDay_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ShiftId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="ShiftName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Student_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Student_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_Student_GetByStudetId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Student_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Student_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="FullName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Email" Type="nvarchar" Mode="In" />
+          <Parameter Name="Mobile" Type="nvarchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="Deleted" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_StudentDetailt_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StdId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_StudentDetailt_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_StudentDetailt_GetByStdId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StdId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_StudentDetailt_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StdId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_StudentDetailt_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StdId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="StudetId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="CoId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Weekdays_DELETE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WeId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Weekdays_GetAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_tbl_S07_Weekdays_GetByWeId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WeId" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Weekdays_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WeId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="WeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_tbl_S07_Weekdays_UPDATE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="WeId" Type="uniqueidentifier" Mode="In" />
+          <Parameter Name="WeName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Description" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="eTrainingScheduleModelStoreContainer">
+          <EntitySet Name="tbl_S07_Courses" EntityType="Self.tbl_S07_Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_CoursesJournal" EntityType="Self.tbl_S07_CoursesJournal" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_Experts" EntityType="Self.tbl_S07_Experts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_ExpertsDetailt" EntityType="Self.tbl_S07_ExpertsDetailt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_SchedStudentDetailt" EntityType="Self.tbl_S07_SchedStudentDetailt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_Schedulers" EntityType="Self.tbl_S07_Schedulers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_ShiftDay" EntityType="Self.tbl_S07_ShiftDay" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_Student" EntityType="Self.tbl_S07_Student" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_StudentDetailt" EntityType="Self.tbl_S07_StudentDetailt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_S07_Weekdays" EntityType="Self.tbl_S07_Weekdays" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="pk_01" Association="Self.pk_01">
+            <End Role="tbl_S07_Experts" EntitySet="tbl_S07_Experts" />
+            <End Role="tbl_S07_ExpertsDetailt" EntitySet="tbl_S07_ExpertsDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_02" Association="Self.pk_02">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_ExpertsDetailt" EntitySet="tbl_S07_ExpertsDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_03" Association="Self.pk_03">
+            <End Role="tbl_S07_Student" EntitySet="tbl_S07_Student" />
+            <End Role="tbl_S07_StudentDetailt" EntitySet="tbl_S07_StudentDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_04" Association="Self.pk_04">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_StudentDetailt" EntitySet="tbl_S07_StudentDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_05" Association="Self.pk_05">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_CoursesJournal" EntitySet="tbl_S07_CoursesJournal" />
+          </AssociationSet>
+          <AssociationSet Name="pk_06" Association="Self.pk_06">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="pk_07" Association="Self.pk_07">
+            <End Role="tbl_S07_Weekdays" EntitySet="tbl_S07_Weekdays" />
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="pk_08" Association="Self.pk_08">
+            <End Role="tbl_S07_ShiftDay" EntitySet="tbl_S07_ShiftDay" />
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="pk_09" Association="Self.pk_09">
+            <End Role="tbl_S07_Student" EntitySet="tbl_S07_Student" />
+            <End Role="tbl_S07_SchedStudentDetailt" EntitySet="tbl_S07_SchedStudentDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_10" Association="Self.pk_10">
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+            <End Role="tbl_S07_SchedStudentDetailt" EntitySet="tbl_S07_SchedStudentDetailt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eTrainingScheduleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_S07_Courses">
+          <Key>
+            <PropertyRef Name="CoId" />
+          </Key>
+          <Property Name="CoId" Type="Guid" Nullable="false" />
+          <Property Name="CourseId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TotalNumber" Type="Byte" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+          <NavigationProperty Name="tbl_S07_ExpertsDetailt" Relationship="Self.pk_02" FromRole="tbl_S07_Courses" ToRole="tbl_S07_ExpertsDetailt" />
+          <NavigationProperty Name="tbl_S07_StudentDetailt" Relationship="Self.pk_04" FromRole="tbl_S07_Courses" ToRole="tbl_S07_StudentDetailt" />
+          <NavigationProperty Name="tbl_S07_CoursesJournal" Relationship="Self.pk_05" FromRole="tbl_S07_Courses" ToRole="tbl_S07_CoursesJournal" />
+          <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_06" FromRole="tbl_S07_Courses" ToRole="tbl_S07_Schedulers" />
+        </EntityType>
+        <EntityType Name="tbl_S07_CoursesJournal">
+          <Key>
+            <PropertyRef Name="CJId" />
+          </Key>
+          <Property Name="CJId" Type="Guid" Nullable="false" />
+          <Property Name="CoId" Type="Guid" />
+          <Property Name="DayOf" Type="DateTime" Precision="3" />
+          <Property Name="Contents" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_05" FromRole="tbl_S07_CoursesJournal" ToRole="tbl_S07_Courses" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Experts">
+          <Key>
+            <PropertyRef Name="ExpertId" />
+          </Key>
+          <Property Name="ExpertId" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Specialize" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" />
+          <NavigationProperty Name="tbl_S07_ExpertsDetailt" Relationship="Self.pk_01" FromRole="tbl_S07_Experts" ToRole="tbl_S07_ExpertsDetailt" />
+        </EntityType>
+        <EntityType Name="tbl_S07_ExpertsDetailt">
+          <Key>
+            <PropertyRef Name="ExId" />
+          </Key>
+          <Property Name="ExId" Type="Guid" Nullable="false" />
+          <Property Name="ExpertId" Type="Guid" />
+          <Property Name="CoId" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_02" FromRole="tbl_S07_ExpertsDetailt" ToRole="tbl_S07_Courses" />
+          <NavigationProperty Name="tbl_S07_Experts" Relationship="Self.pk_01" FromRole="tbl_S07_ExpertsDetailt" ToRole="tbl_S07_Experts" />
+        </EntityType>
+        <EntityType Name="tbl_S07_SchedStudentDetailt">
+          <Key>
+            <PropertyRef Name="ScsId" />
+          </Key>
+          <Property Name="ScsId" Type="Guid" Nullable="false" />
+          <Property Name="StudetId" Type="Guid" />
+          <Property Name="ScId" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_S07_Student" Relationship="Self.pk_09" FromRole="tbl_S07_SchedStudentDetailt" ToRole="tbl_S07_Student" />
+          <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_10" FromRole="tbl_S07_SchedStudentDetailt" ToRole="tbl_S07_Schedulers" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Schedulers">
+          <Key>
+            <PropertyRef Name="ScId" />
+          </Key>
+          <Property Name="ScId" Type="Guid" Nullable="false" />
+          <Property Name="WeId" Type="Guid" />
+          <Property Name="ShiftId" Type="Guid" />
+          <Property Name="CoId" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_06" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_Courses" />
+          <NavigationProperty Name="tbl_S07_SchedStudentDetailt" Relationship="Self.pk_10" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_SchedStudentDetailt" />
+          <NavigationProperty Name="tbl_S07_Weekdays" Relationship="Self.pk_07" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_Weekdays" />
+          <NavigationProperty Name="tbl_S07_ShiftDay" Relationship="Self.pk_08" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_ShiftDay" />
+        </EntityType>
+        <EntityType Name="tbl_S07_ShiftDay">
+          <Key>
+            <PropertyRef Name="ShiftId" />
+          </Key>
+          <Property Name="ShiftId" Type="Guid" Nullable="false" />
+          <Property Name="ShiftName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_08" FromRole="tbl_S07_ShiftDay" ToRole="tbl_S07_Schedulers" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Student">
+          <Key>
+            <PropertyRef Name="StudetId" />
+          </Key>
+          <Property Name="StudetId" Type="Guid" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <NavigationProperty Name="tbl_S07_SchedStudentDetailt" Relationship="Self.pk_09" FromRole="tbl_S07_Student" ToRole="tbl_S07_SchedStudentDetailt" />
+          <NavigationProperty Name="tbl_S07_StudentDetailt" Relationship="Self.pk_03" FromRole="tbl_S07_Student" ToRole="tbl_S07_StudentDetailt" />
+        </EntityType>
+        <EntityType Name="tbl_S07_StudentDetailt">
+          <Key>
+            <PropertyRef Name="StdId" />
+          </Key>
+          <Property Name="StdId" Type="Guid" Nullable="false" />
+          <Property Name="StudetId" Type="Guid" />
+          <Property Name="CoId" Type="Guid" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_04" FromRole="tbl_S07_StudentDetailt" ToRole="tbl_S07_Courses" />
+          <NavigationProperty Name="tbl_S07_Student" Relationship="Self.pk_03" FromRole="tbl_S07_StudentDetailt" ToRole="tbl_S07_Student" />
+        </EntityType>
+        <EntityType Name="tbl_S07_Weekdays">
+          <Key>
+            <PropertyRef Name="WeId" />
+          </Key>
+          <Property Name="WeId" Type="Guid" Nullable="false" />
+          <Property Name="WeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_07" FromRole="tbl_S07_Weekdays" ToRole="tbl_S07_Schedulers" />
+        </EntityType>
+        <Association Name="pk_02">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_ExpertsDetailt" Type="Self.tbl_S07_ExpertsDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_ExpertsDetailt">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_04">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_StudentDetailt" Type="Self.tbl_S07_StudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_StudentDetailt">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_05">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_CoursesJournal" Type="Self.tbl_S07_CoursesJournal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_CoursesJournal">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_06">
+          <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Courses">
+              <PropertyRef Name="CoId" />
+            </Principal>
+            <Dependent Role="tbl_S07_Schedulers">
+              <PropertyRef Name="CoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_01">
+          <End Role="tbl_S07_Experts" Type="Self.tbl_S07_Experts" Multiplicity="0..1" />
+          <End Role="tbl_S07_ExpertsDetailt" Type="Self.tbl_S07_ExpertsDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Experts">
+              <PropertyRef Name="ExpertId" />
+            </Principal>
+            <Dependent Role="tbl_S07_ExpertsDetailt">
+              <PropertyRef Name="ExpertId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_09">
+          <End Role="tbl_S07_Student" Type="Self.tbl_S07_Student" Multiplicity="0..1" />
+          <End Role="tbl_S07_SchedStudentDetailt" Type="Self.tbl_S07_SchedStudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Student">
+              <PropertyRef Name="StudetId" />
+            </Principal>
+            <Dependent Role="tbl_S07_SchedStudentDetailt">
+              <PropertyRef Name="StudetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_10">
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="0..1" />
+          <End Role="tbl_S07_SchedStudentDetailt" Type="Self.tbl_S07_SchedStudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Schedulers">
+              <PropertyRef Name="ScId" />
+            </Principal>
+            <Dependent Role="tbl_S07_SchedStudentDetailt">
+              <PropertyRef Name="ScId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_07">
+          <End Role="tbl_S07_Weekdays" Type="Self.tbl_S07_Weekdays" Multiplicity="0..1" />
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Weekdays">
+              <PropertyRef Name="WeId" />
+            </Principal>
+            <Dependent Role="tbl_S07_Schedulers">
+              <PropertyRef Name="WeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_08">
+          <End Role="tbl_S07_ShiftDay" Type="Self.tbl_S07_ShiftDay" Multiplicity="0..1" />
+          <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_ShiftDay">
+              <PropertyRef Name="ShiftId" />
+            </Principal>
+            <Dependent Role="tbl_S07_Schedulers">
+              <PropertyRef Name="ShiftId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="pk_03">
+          <End Role="tbl_S07_Student" Type="Self.tbl_S07_Student" Multiplicity="0..1" />
+          <End Role="tbl_S07_StudentDetailt" Type="Self.tbl_S07_StudentDetailt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_S07_Student">
+              <PropertyRef Name="StudetId" />
+            </Principal>
+            <Dependent Role="tbl_S07_StudentDetailt">
+              <PropertyRef Name="StudetId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eTrainingScheduleEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_S07_Courses" EntityType="Self.tbl_S07_Courses" />
+          <EntitySet Name="tbl_S07_CoursesJournal" EntityType="Self.tbl_S07_CoursesJournal" />
+          <EntitySet Name="tbl_S07_Experts" EntityType="Self.tbl_S07_Experts" />
+          <EntitySet Name="tbl_S07_ExpertsDetailt" EntityType="Self.tbl_S07_ExpertsDetailt" />
+          <EntitySet Name="tbl_S07_SchedStudentDetailt" EntityType="Self.tbl_S07_SchedStudentDetailt" />
+          <EntitySet Name="tbl_S07_Schedulers" EntityType="Self.tbl_S07_Schedulers" />
+          <EntitySet Name="tbl_S07_ShiftDay" EntityType="Self.tbl_S07_ShiftDay" />
+          <EntitySet Name="tbl_S07_Student" EntityType="Self.tbl_S07_Student" />
+          <EntitySet Name="tbl_S07_StudentDetailt" EntityType="Self.tbl_S07_StudentDetailt" />
+          <EntitySet Name="tbl_S07_Weekdays" EntityType="Self.tbl_S07_Weekdays" />
+          <AssociationSet Name="pk_02" Association="Self.pk_02">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_ExpertsDetailt" EntitySet="tbl_S07_ExpertsDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_04" Association="Self.pk_04">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_StudentDetailt" EntitySet="tbl_S07_StudentDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_05" Association="Self.pk_05">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_CoursesJournal" EntitySet="tbl_S07_CoursesJournal" />
+          </AssociationSet>
+          <AssociationSet Name="pk_06" Association="Self.pk_06">
+            <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="pk_01" Association="Self.pk_01">
+            <End Role="tbl_S07_Experts" EntitySet="tbl_S07_Experts" />
+            <End Role="tbl_S07_ExpertsDetailt" EntitySet="tbl_S07_ExpertsDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_09" Association="Self.pk_09">
+            <End Role="tbl_S07_Student" EntitySet="tbl_S07_Student" />
+            <End Role="tbl_S07_SchedStudentDetailt" EntitySet="tbl_S07_SchedStudentDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_10" Association="Self.pk_10">
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+            <End Role="tbl_S07_SchedStudentDetailt" EntitySet="tbl_S07_SchedStudentDetailt" />
+          </AssociationSet>
+          <AssociationSet Name="pk_07" Association="Self.pk_07">
+            <End Role="tbl_S07_Weekdays" EntitySet="tbl_S07_Weekdays" />
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="pk_08" Association="Self.pk_08">
+            <End Role="tbl_S07_ShiftDay" EntitySet="tbl_S07_ShiftDay" />
+            <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+          </AssociationSet>
+          <AssociationSet Name="pk_03" Association="Self.pk_03">
+            <End Role="tbl_S07_Student" EntitySet="tbl_S07_Student" />
+            <End Role="tbl_S07_StudentDetailt" EntitySet="tbl_S07_StudentDetailt" />
+          </AssociationSet>
+          <FunctionImport Name="sp_tbl_S07_Courses_DELETE">
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Courses_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Courses_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_Courses_GetByCoId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Courses_GetByCoId_Result)">
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Courses_INSERT">
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="CourseId" Mode="In" Type="String" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="TotalNumber" Mode="In" Type="Byte" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Courses_UPDATE">
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="CourseId" Mode="In" Type="String" />
+            <Parameter Name="CourseName" Mode="In" Type="String" />
+            <Parameter Name="TotalNumber" Mode="In" Type="Byte" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_CoursesJournal_DELETE">
+            <Parameter Name="CJId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_CoursesJournal_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_CoursesJournal_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_CoursesJournal_GetByCJId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_CoursesJournal_GetByCJId_Result)">
+            <Parameter Name="CJId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_CoursesJournal_INSERT">
+            <Parameter Name="CJId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="DayOf" Mode="In" Type="DateTime" />
+            <Parameter Name="Contents" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_CoursesJournal_UPDATE">
+            <Parameter Name="CJId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="DayOf" Mode="In" Type="DateTime" />
+            <Parameter Name="Contents" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Experts_DELETE">
+            <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Experts_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Experts_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_Experts_GetByExpertId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Experts_GetByExpertId_Result)">
+            <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Experts_INSERT">
+            <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Specialize" Mode="In" Type="String" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Experts_UPDATE">
+            <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Specialize" Mode="In" Type="String" />
+            <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+            <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_DELETE">
+            <Parameter Name="ExId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ExpertsDetailt_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_GetByExId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ExpertsDetailt_GetByExId_Result)">
+            <Parameter Name="ExId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_INSERT">
+            <Parameter Name="ExId" Mode="In" Type="Guid" />
+            <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_UPDATE">
+            <Parameter Name="ExId" Mode="In" Type="Guid" />
+            <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_DELETE">
+            <Parameter Name="ScsId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_SchedStudentDetailt_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_GetByScsId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_SchedStudentDetailt_GetByScsId_Result)">
+            <Parameter Name="ScsId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_INSERT">
+            <Parameter Name="ScsId" Mode="In" Type="Guid" />
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+            <Parameter Name="ScId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_UPDATE">
+            <Parameter Name="ScsId" Mode="In" Type="Guid" />
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+            <Parameter Name="ScId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Schedulers_DELETE">
+            <Parameter Name="ScId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Schedulers_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Schedulers_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_Schedulers_GetByScId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Schedulers_GetByScId_Result)">
+            <Parameter Name="ScId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Schedulers_INSERT">
+            <Parameter Name="ScId" Mode="In" Type="Guid" />
+            <Parameter Name="WeId" Mode="In" Type="Guid" />
+            <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Schedulers_UPDATE">
+            <Parameter Name="ScId" Mode="In" Type="Guid" />
+            <Parameter Name="WeId" Mode="In" Type="Guid" />
+            <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ShiftDay_DELETE">
+            <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ShiftDay_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ShiftDay_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_ShiftDay_GetByShiftId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ShiftDay_GetByShiftId_Result)">
+            <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ShiftDay_INSERT">
+            <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+            <Parameter Name="ShiftName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_ShiftDay_UPDATE">
+            <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+            <Parameter Name="ShiftName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Student_DELETE">
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Student_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Student_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_Student_GetByStudetId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Student_GetByStudetId_Result)">
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Student_INSERT">
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Student_UPDATE">
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+            <Parameter Name="FullName" Mode="In" Type="String" />
+            <Parameter Name="Email" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Status" Mode="In" Type="Boolean" />
+            <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_StudentDetailt_DELETE">
+            <Parameter Name="StdId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_StudentDetailt_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_StudentDetailt_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_StudentDetailt_GetByStdId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_StudentDetailt_GetByStdId_Result)">
+            <Parameter Name="StdId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_StudentDetailt_INSERT">
+            <Parameter Name="StdId" Mode="In" Type="Guid" />
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_StudentDetailt_UPDATE">
+            <Parameter Name="StdId" Mode="In" Type="Guid" />
+            <Parameter Name="StudetId" Mode="In" Type="Guid" />
+            <Parameter Name="CoId" Mode="In" Type="Guid" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Weekdays_DELETE">
+            <Parameter Name="WeId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Weekdays_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Weekdays_GetAll_Result)" />
+          <FunctionImport Name="sp_tbl_S07_Weekdays_GetByWeId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Weekdays_GetByWeId_Result)">
+            <Parameter Name="WeId" Mode="In" Type="Guid" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Weekdays_INSERT">
+            <Parameter Name="WeId" Mode="In" Type="Guid" />
+            <Parameter Name="WeName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_tbl_S07_Weekdays_UPDATE">
+            <Parameter Name="WeId" Mode="In" Type="Guid" />
+            <Parameter Name="WeName" Mode="In" Type="String" />
+            <Parameter Name="Description" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="sp_tbl_S07_Courses_GetAll_Result">
+          <Property Type="Guid" Name="CoId" Nullable="false" />
+          <Property Type="String" Name="CourseId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CourseName" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="TotalNumber" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Courses_GetByCoId_Result">
+          <Property Type="Guid" Name="CoId" Nullable="false" />
+          <Property Type="String" Name="CourseId" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CourseName" Nullable="true" MaxLength="50" />
+          <Property Type="Byte" Name="TotalNumber" Nullable="true" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_CoursesJournal_GetAll_Result">
+          <Property Type="Guid" Name="CJId" Nullable="false" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="DateTime" Name="DayOf" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Contents" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_CoursesJournal_GetByCJId_Result">
+          <Property Type="Guid" Name="CJId" Nullable="false" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="DateTime" Name="DayOf" Nullable="true" Precision="23" />
+          <Property Type="String" Name="Contents" Nullable="true" MaxLength="400" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Experts_GetAll_Result">
+          <Property Type="Guid" Name="ExpertId" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Specialize" Nullable="true" MaxLength="150" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Experts_GetByExpertId_Result">
+          <Property Type="Guid" Name="ExpertId" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Specialize" Nullable="true" MaxLength="150" />
+          <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_ExpertsDetailt_GetAll_Result">
+          <Property Type="Guid" Name="ExId" Nullable="false" />
+          <Property Type="Guid" Name="ExpertId" Nullable="true" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_ExpertsDetailt_GetByExId_Result">
+          <Property Type="Guid" Name="ExId" Nullable="false" />
+          <Property Type="Guid" Name="ExpertId" Nullable="true" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_SchedStudentDetailt_GetAll_Result">
+          <Property Type="Guid" Name="ScsId" Nullable="false" />
+          <Property Type="Guid" Name="StudetId" Nullable="true" />
+          <Property Type="Guid" Name="ScId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_SchedStudentDetailt_GetByScsId_Result">
+          <Property Type="Guid" Name="ScsId" Nullable="false" />
+          <Property Type="Guid" Name="StudetId" Nullable="true" />
+          <Property Type="Guid" Name="ScId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Schedulers_GetAll_Result">
+          <Property Type="Guid" Name="ScId" Nullable="false" />
+          <Property Type="Guid" Name="WeId" Nullable="true" />
+          <Property Type="Guid" Name="ShiftId" Nullable="true" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Schedulers_GetByScId_Result">
+          <Property Type="Guid" Name="ScId" Nullable="false" />
+          <Property Type="Guid" Name="WeId" Nullable="true" />
+          <Property Type="Guid" Name="ShiftId" Nullable="true" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_ShiftDay_GetAll_Result">
+          <Property Type="Guid" Name="ShiftId" Nullable="false" />
+          <Property Type="String" Name="ShiftName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_ShiftDay_GetByShiftId_Result">
+          <Property Type="Guid" Name="ShiftId" Nullable="false" />
+          <Property Type="String" Name="ShiftName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Student_GetAll_Result">
+          <Property Type="Guid" Name="StudetId" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Student_GetByStudetId_Result">
+          <Property Type="Guid" Name="StudetId" Nullable="false" />
+          <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+          <Property Type="Boolean" Name="Status" Nullable="true" />
+          <Property Type="Boolean" Name="Deleted" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_StudentDetailt_GetAll_Result">
+          <Property Type="Guid" Name="StdId" Nullable="false" />
+          <Property Type="Guid" Name="StudetId" Nullable="true" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_StudentDetailt_GetByStdId_Result">
+          <Property Type="Guid" Name="StdId" Nullable="false" />
+          <Property Type="Guid" Name="StudetId" Nullable="true" />
+          <Property Type="Guid" Name="CoId" Nullable="true" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Weekdays_GetAll_Result">
+          <Property Type="Guid" Name="WeId" Nullable="false" />
+          <Property Type="String" Name="WeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="sp_tbl_S07_Weekdays_GetByWeId_Result">
+          <Property Type="Guid" Name="WeId" Nullable="false" />
+          <Property Type="String" Name="WeName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eTrainingScheduleModelStoreContainer" CdmEntityContainer="eTrainingScheduleEntities">
+          <EntitySetMapping Name="tbl_S07_Courses">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_Courses">
+              <MappingFragment StoreEntitySet="tbl_S07_Courses">
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_CoursesJournal">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_CoursesJournal">
+              <MappingFragment StoreEntitySet="tbl_S07_CoursesJournal">
+                <ScalarProperty Name="CJId" ColumnName="CJId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="DayOf" ColumnName="DayOf" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_Experts">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_Experts">
+              <MappingFragment StoreEntitySet="tbl_S07_Experts">
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Specialize" ColumnName="Specialize" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_ExpertsDetailt">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_ExpertsDetailt">
+              <MappingFragment StoreEntitySet="tbl_S07_ExpertsDetailt">
+                <ScalarProperty Name="ExId" ColumnName="ExId" />
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_SchedStudentDetailt">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_SchedStudentDetailt">
+              <MappingFragment StoreEntitySet="tbl_S07_SchedStudentDetailt">
+                <ScalarProperty Name="ScsId" ColumnName="ScsId" />
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="ScId" ColumnName="ScId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_Schedulers">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_Schedulers">
+              <MappingFragment StoreEntitySet="tbl_S07_Schedulers">
+                <ScalarProperty Name="ScId" ColumnName="ScId" />
+                <ScalarProperty Name="WeId" ColumnName="WeId" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_ShiftDay">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_ShiftDay">
+              <MappingFragment StoreEntitySet="tbl_S07_ShiftDay">
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_Student">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_Student">
+              <MappingFragment StoreEntitySet="tbl_S07_Student">
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_StudentDetailt">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_StudentDetailt">
+              <MappingFragment StoreEntitySet="tbl_S07_StudentDetailt">
+                <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_S07_Weekdays">
+            <EntityTypeMapping TypeName="eTrainingScheduleModel.tbl_S07_Weekdays">
+              <MappingFragment StoreEntitySet="tbl_S07_Weekdays">
+                <ScalarProperty Name="WeId" ColumnName="WeId" />
+                <ScalarProperty Name="WeName" ColumnName="WeName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Courses_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Courses_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Courses_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Courses_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Courses_GetAll_Result">
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Courses_GetByCoId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Courses_GetByCoId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Courses_GetByCoId_Result">
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="CourseId" ColumnName="CourseId" />
+                <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+                <ScalarProperty Name="TotalNumber" ColumnName="TotalNumber" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Courses_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Courses_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Courses_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Courses_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_CoursesJournal_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_CoursesJournal_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_CoursesJournal_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_CoursesJournal_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_CoursesJournal_GetAll_Result">
+                <ScalarProperty Name="CJId" ColumnName="CJId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="DayOf" ColumnName="DayOf" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_CoursesJournal_GetByCJId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_CoursesJournal_GetByCJId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_CoursesJournal_GetByCJId_Result">
+                <ScalarProperty Name="CJId" ColumnName="CJId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="DayOf" ColumnName="DayOf" />
+                <ScalarProperty Name="Contents" ColumnName="Contents" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_CoursesJournal_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_CoursesJournal_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_CoursesJournal_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_CoursesJournal_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Experts_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Experts_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Experts_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Experts_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Experts_GetAll_Result">
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Specialize" ColumnName="Specialize" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Experts_GetByExpertId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Experts_GetByExpertId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Experts_GetByExpertId_Result">
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Specialize" ColumnName="Specialize" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Experts_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Experts_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Experts_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Experts_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ExpertsDetailt_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ExpertsDetailt_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ExpertsDetailt_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ExpertsDetailt_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_ExpertsDetailt_GetAll_Result">
+                <ScalarProperty Name="ExId" ColumnName="ExId" />
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ExpertsDetailt_GetByExId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ExpertsDetailt_GetByExId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_ExpertsDetailt_GetByExId_Result">
+                <ScalarProperty Name="ExId" ColumnName="ExId" />
+                <ScalarProperty Name="ExpertId" ColumnName="ExpertId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ExpertsDetailt_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ExpertsDetailt_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ExpertsDetailt_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ExpertsDetailt_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_SchedStudentDetailt_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_SchedStudentDetailt_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_SchedStudentDetailt_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_SchedStudentDetailt_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_SchedStudentDetailt_GetAll_Result">
+                <ScalarProperty Name="ScsId" ColumnName="ScsId" />
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="ScId" ColumnName="ScId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_SchedStudentDetailt_GetByScsId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_SchedStudentDetailt_GetByScsId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_SchedStudentDetailt_GetByScsId_Result">
+                <ScalarProperty Name="ScsId" ColumnName="ScsId" />
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="ScId" ColumnName="ScId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_SchedStudentDetailt_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_SchedStudentDetailt_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_SchedStudentDetailt_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_SchedStudentDetailt_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Schedulers_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Schedulers_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Schedulers_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Schedulers_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Schedulers_GetAll_Result">
+                <ScalarProperty Name="ScId" ColumnName="ScId" />
+                <ScalarProperty Name="WeId" ColumnName="WeId" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Schedulers_GetByScId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Schedulers_GetByScId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Schedulers_GetByScId_Result">
+                <ScalarProperty Name="ScId" ColumnName="ScId" />
+                <ScalarProperty Name="WeId" ColumnName="WeId" />
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Schedulers_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Schedulers_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Schedulers_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Schedulers_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ShiftDay_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ShiftDay_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ShiftDay_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ShiftDay_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_ShiftDay_GetAll_Result">
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ShiftDay_GetByShiftId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ShiftDay_GetByShiftId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_ShiftDay_GetByShiftId_Result">
+                <ScalarProperty Name="ShiftId" ColumnName="ShiftId" />
+                <ScalarProperty Name="ShiftName" ColumnName="ShiftName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ShiftDay_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ShiftDay_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_ShiftDay_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_ShiftDay_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Student_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Student_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Student_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Student_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Student_GetAll_Result">
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Student_GetByStudetId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Student_GetByStudetId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Student_GetByStudetId_Result">
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Student_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Student_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Student_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Student_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_StudentDetailt_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_StudentDetailt_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_StudentDetailt_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_StudentDetailt_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_StudentDetailt_GetAll_Result">
+                <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_StudentDetailt_GetByStdId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_StudentDetailt_GetByStdId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_StudentDetailt_GetByStdId_Result">
+                <ScalarProperty Name="StdId" ColumnName="StdId" />
+                <ScalarProperty Name="StudetId" ColumnName="StudetId" />
+                <ScalarProperty Name="CoId" ColumnName="CoId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_StudentDetailt_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_StudentDetailt_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_StudentDetailt_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_StudentDetailt_UPDATE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Weekdays_DELETE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Weekdays_DELETE" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Weekdays_GetAll" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Weekdays_GetAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Weekdays_GetAll_Result">
+                <ScalarProperty Name="WeId" ColumnName="WeId" />
+                <ScalarProperty Name="WeName" ColumnName="WeName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Weekdays_GetByWeId" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Weekdays_GetByWeId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eTrainingScheduleModel.sp_tbl_S07_Weekdays_GetByWeId_Result">
+                <ScalarProperty Name="WeId" ColumnName="WeId" />
+                <ScalarProperty Name="WeName" ColumnName="WeName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Weekdays_INSERT" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Weekdays_INSERT" />
+          <FunctionImportMapping FunctionImportName="sp_tbl_S07_Weekdays_UPDATE" FunctionName="eTrainingScheduleModel.Store.sp_tbl_S07_Weekdays_UPDATE" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

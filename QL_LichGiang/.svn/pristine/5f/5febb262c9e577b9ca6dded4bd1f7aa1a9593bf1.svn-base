@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<repositories>
+  <repository path="..\20170601_QLDAOTAO\packages.config" />
+  <repository path="..\DATA_ACCESS_LAYER\packages.config" />
+</repositories>

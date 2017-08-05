@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using BUSINESS_LOGIC_LAYER.BCL;
+
+namespace QL_LICHGIANGDAY.UserControll
+{
+    public partial class UcCoursesJourna : UserControl
+    {
+        private CoursesJournalBCL objBclCouresesJour = new CoursesJournalBCL();
+        public UcCoursesJourna()
+        {
+            InitializeComponent();
+            ucBaseControl1.onThemThongTin += new EventHandler(ucBaseControl1_onThemThongTin);
+            ucBaseControl1.onSuaThongTin += new EventHandler(ucBaseControl1_onSuaThongTin);
+            ucBaseControl1.onXoaThongTin += new EventHandler(ucBaseControl1_onXoaThongTin);
+        }
+        void ucBaseControl1_onXoaThongTin(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ucBaseControl1_onSuaThongTin(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        void ucBaseControl1_onThemThongTin(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void grcCourses_Load(object sender, EventArgs e)
+        {
+            Load_DataCoursesJourna();
+        }
+        void Load_DataCoursesJourna()
+        {
+            grcCoursesJourna.DataSource = objBclCouresesJour.GetAll();
+        }
+    }
+}

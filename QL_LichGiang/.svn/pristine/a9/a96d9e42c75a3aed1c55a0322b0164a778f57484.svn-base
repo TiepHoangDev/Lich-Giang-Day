@@ -1,0 +1,731 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FAB3DAB1-C381-4B06-A7D2-C9276EA9BC31}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QL_LICHGIANGDAY</RootNamespace>
+    <AssemblyName>QL_LICHGIANGDAY</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.BonusSkins.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v14.1.Core, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v14.1.Core, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v14.1.Core, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraNavBar.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v14.1, Version=14.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform">
+      <HintPath>..\packages\Microsoft.Web.Xdt.2.1.1\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Core, Version=2.14.0.832, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NuGet.Core.2.14.0\lib\net40-Client\NuGet.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UserControll\UcBaseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcBaseControl.Designer.cs">
+      <DependentUpon>UcBaseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMAINAPPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMAINAPPS.Designer.cs">
+      <DependentUpon>frmMAINAPPS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControll\UcCourses.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcCourses.Designer.cs">
+      <DependentUpon>UcCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcCoursesJourna.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcCoursesJourna.Designer.cs">
+      <DependentUpon>UcCoursesJourna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcExperts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcExperts.Designer.cs">
+      <DependentUpon>UcExperts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcExpertsDetailt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcExpertsDetailt.Designer.cs">
+      <DependentUpon>UcExpertsDetailt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcPermisstion.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcPermisstion.Designer.cs">
+      <DependentUpon>UcPermisstion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcSchedStudentDetailt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcSchedStudentDetailt.Designer.cs">
+      <DependentUpon>UcSchedStudentDetailt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcSchedulers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcSchedulers.Designer.cs">
+      <DependentUpon>UcSchedulers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcShiftDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcShiftDay.Designer.cs">
+      <DependentUpon>UcShiftDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcStudent.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcStudent.Designer.cs">
+      <DependentUpon>UcStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcStudentDetailt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcStudentDetailt.Designer.cs">
+      <DependentUpon>UcStudentDetailt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcAccount.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcAccount.Designer.cs">
+      <DependentUpon>UcAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControll\UcWeekdaysDao.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControll\UcWeekdaysDao.Designer.cs">
+      <DependentUpon>UcWeekdaysDao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Account\UsAddAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Account\UsAddAccount.Designer.cs">
+      <DependentUpon>UsAddAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Account\UsEditAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Account\UsEditAccount.Designer.cs">
+      <DependentUpon>UsEditAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\ExpertsDetailt\UsAddExpertsDetailt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\ExpertsDetailt\UsAddExpertsDetailt.Designer.cs">
+      <DependentUpon>UsAddExpertsDetailt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\ExpertsDetailt\UsEditExpertsDetailt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\ExpertsDetailt\UsEditExpertsDetailt.Designer.cs">
+      <DependentUpon>UsEditExpertsDetailt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Experts\UsAddExperts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Experts\UsAddExperts.Designer.cs">
+      <DependentUpon>UsAddExperts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Experts\UsEditExperts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Experts\UsEditExperts.Designer.cs">
+      <DependentUpon>UsEditExperts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\frmDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\frmDetail.Designer.cs">
+      <DependentUpon>frmDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Login\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Login\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\SchedStudentDetailt\UsAddSchedStudentDetailt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\SchedStudentDetailt\UsAddSchedStudentDetailt.Designer.cs">
+      <DependentUpon>UsAddSchedStudentDetailt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\SchedStudentDetailt\UsEditSchedStudentDetailt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\SchedStudentDetailt\UsEditSchedStudentDetailt.Designer.cs">
+      <DependentUpon>UsEditSchedStudentDetailt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Schedulers\UsAddSchedulers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Schedulers\UsAddSchedulers.Designer.cs">
+      <DependentUpon>UsAddSchedulers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Schedulers\UsEditSchedulers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Schedulers\UsEditSchedulers.Designer.cs">
+      <DependentUpon>UsEditSchedulers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\ShiftDay\CaHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\ShiftDay\CaHoc.Designer.cs">
+      <DependentUpon>CaHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\StudentDetailt\ChiTietHocVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\StudentDetailt\ChiTietHocVien.Designer.cs">
+      <DependentUpon>ChiTietHocVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Student\SuaHocVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Student\SuaHocVien.Designer.cs">
+      <DependentUpon>SuaHocVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Student\ThongTinHocVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Student\ThongTinHocVien.Designer.cs">
+      <DependentUpon>ThongTinHocVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\UsCoursesJourna\UsAddCoursesJourna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\UsCoursesJourna\UsAddCoursesJourna.Designer.cs">
+      <DependentUpon>UsAddCoursesJourna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\UsCoursesJourna\UsUpdateCousesJourna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\UsCoursesJourna\UsUpdateCousesJourna.Designer.cs">
+      <DependentUpon>UsUpdateCousesJourna.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\UsCourses\UsAddCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\UsCourses\UsAddCourses.Designer.cs">
+      <DependentUpon>UsAddCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\UsCourses\UsUpdateCourses.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\UsCourses\UsUpdateCourses.Designer.cs">
+      <DependentUpon>UsUpdateCourses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\Weekdays\ThuTrongTuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\Weekdays\ThuTrongTuan.Designer.cs">
+      <DependentUpon>ThuTrongTuan.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="UserControll\UcBaseControl.resx">
+      <DependentUpon>UcBaseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMAINAPPS.resx">
+      <DependentUpon>frmMAINAPPS.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UserControll\UcCourses.resx">
+      <DependentUpon>UcCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcCoursesJourna.resx">
+      <DependentUpon>UcCoursesJourna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcExperts.resx">
+      <DependentUpon>UcExperts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcExpertsDetailt.resx">
+      <DependentUpon>UcExpertsDetailt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcPermisstion.resx">
+      <DependentUpon>UcPermisstion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcSchedStudentDetailt.resx">
+      <DependentUpon>UcSchedStudentDetailt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcSchedulers.resx">
+      <DependentUpon>UcSchedulers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcShiftDay.resx">
+      <DependentUpon>UcShiftDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcStudent.resx">
+      <DependentUpon>UcStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcStudentDetailt.resx">
+      <DependentUpon>UcStudentDetailt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcAccount.resx">
+      <DependentUpon>UcAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControll\UcWeekdaysDao.resx">
+      <DependentUpon>UcWeekdaysDao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Account\UsAddAccount.resx">
+      <DependentUpon>UsAddAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Account\UsEditAccount.resx">
+      <DependentUpon>UsEditAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\ExpertsDetailt\UsAddExpertsDetailt.resx">
+      <DependentUpon>UsAddExpertsDetailt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\ExpertsDetailt\UsEditExpertsDetailt.resx">
+      <DependentUpon>UsEditExpertsDetailt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Experts\UsAddExperts.resx">
+      <DependentUpon>UsAddExperts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Experts\UsEditExperts.resx">
+      <DependentUpon>UsEditExperts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\frmDetail.resx">
+      <DependentUpon>frmDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Login\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\SchedStudentDetailt\UsAddSchedStudentDetailt.resx">
+      <DependentUpon>UsAddSchedStudentDetailt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\SchedStudentDetailt\UsEditSchedStudentDetailt.resx">
+      <DependentUpon>UsEditSchedStudentDetailt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Schedulers\UsAddSchedulers.resx">
+      <DependentUpon>UsAddSchedulers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Schedulers\UsEditSchedulers.resx">
+      <DependentUpon>UsEditSchedulers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\ShiftDay\CaHoc.resx">
+      <DependentUpon>CaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\StudentDetailt\ChiTietHocVien.resx">
+      <DependentUpon>ChiTietHocVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Student\SuaHocVien.resx">
+      <DependentUpon>SuaHocVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Student\ThongTinHocVien.resx">
+      <DependentUpon>ThongTinHocVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\UsCoursesJourna\UsAddCoursesJourna.resx">
+      <DependentUpon>UsAddCoursesJourna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\UsCoursesJourna\UsUpdateCousesJourna.resx">
+      <DependentUpon>UsUpdateCousesJourna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\UsCourses\UsAddCourses.resx">
+      <DependentUpon>UsAddCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\UsCourses\UsUpdateCourses.resx">
+      <DependentUpon>UsUpdateCourses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\Weekdays\ThuTrongTuan.resx">
+      <DependentUpon>ThuTrongTuan.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BUSINESS_OBJECT.Objects.RoleObject.datasource" />
+    <None Include="Properties\DataSources\BUSINESS_OBJECT.Objects.SchedulersObjects.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUSINESS_LOGIC_LAYER\BUSINESS_LOGIC_LAYER.csproj">
+      <Project>{ed79b7b7-82ba-4a19-b890-20ed3dcd5da0}</Project>
+      <Name>BUSINESS_LOGIC_LAYER</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BUSINESS_OBJECT\BUSINESS_OBJECT.csproj">
+      <Project>{7b402cde-7a14-44b3-a56e-17926baa17f6}</Project>
+      <Name>BUSINESS_OBJECT</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_Graph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\001-three.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\002-tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\02-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\003-hairdresser-washing-the-hair-of-a-client-with-bubbles-shampoo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\004-hairdresser-with-comb-and-scissors.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\005-circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_company.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_receipt_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add_request_incentive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_Symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add-product-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\best_employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\birthday.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book_edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cake01.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cake02.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cake03.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calculator.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calculator-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cansolate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chair-and-sink-tools-for-wash-hair-at-the-salon_318-56931.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chair-and-sink-tools-for-wash-hair-at-the-salon_318-56931.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chuongdo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chuongvang.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\company_list_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contact_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Conversation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cosmetic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\custom_package.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\customer_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Debt+Collection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteRed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DeleteRed1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Employee Card-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fav-star-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gift_box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\history2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic_note.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lotus_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lotus_yellow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mail_Gmail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\manager_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\massage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\navneaendring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\package.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Person-add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Piechart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Prestige_Rank_Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\promotion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quick_search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipt_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipt_list_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\receipt_list_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\renew.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\role.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\room-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\service.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\service-group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\spa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\staff_login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\supplier.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\support_employee.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User Groups-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bag.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blockdevice32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calendar_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_Bar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_Bar_3D_Ascending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_Bar_3D_Descending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_Bar_Document.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_Bar_Files.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Chart_Bar_Files_Wide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\friends_group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Group Idea.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icon_users_32px.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\key2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login Manager32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\login_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\register.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unlock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder_Favorites.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Folder_Add.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

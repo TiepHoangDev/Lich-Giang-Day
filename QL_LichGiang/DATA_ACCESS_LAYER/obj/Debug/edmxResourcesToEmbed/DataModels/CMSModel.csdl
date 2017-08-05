@@ -1,0 +1,665 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="eTrainingScheduleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_S07_Courses">
+    <Key>
+      <PropertyRef Name="CoId" />
+    </Key>
+    <Property Name="CoId" Type="Guid" Nullable="false" />
+    <Property Name="CourseId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CourseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TotalNumber" Type="Byte" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" />
+    <NavigationProperty Name="tbl_S07_ExpertsDetailt" Relationship="Self.pk_02" FromRole="tbl_S07_Courses" ToRole="tbl_S07_ExpertsDetailt" />
+    <NavigationProperty Name="tbl_S07_StudentDetailt" Relationship="Self.pk_04" FromRole="tbl_S07_Courses" ToRole="tbl_S07_StudentDetailt" />
+    <NavigationProperty Name="tbl_S07_CoursesJournal" Relationship="Self.pk_05" FromRole="tbl_S07_Courses" ToRole="tbl_S07_CoursesJournal" />
+    <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_06" FromRole="tbl_S07_Courses" ToRole="tbl_S07_Schedulers" />
+  </EntityType>
+  <EntityType Name="tbl_S07_CoursesJournal">
+    <Key>
+      <PropertyRef Name="CJId" />
+    </Key>
+    <Property Name="CJId" Type="Guid" Nullable="false" />
+    <Property Name="CoId" Type="Guid" />
+    <Property Name="DayOf" Type="DateTime" Precision="3" />
+    <Property Name="Contents" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_05" FromRole="tbl_S07_CoursesJournal" ToRole="tbl_S07_Courses" />
+  </EntityType>
+  <EntityType Name="tbl_S07_Experts">
+    <Key>
+      <PropertyRef Name="ExpertId" />
+    </Key>
+    <Property Name="ExpertId" Type="Guid" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Specialize" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" />
+    <NavigationProperty Name="tbl_S07_ExpertsDetailt" Relationship="Self.pk_01" FromRole="tbl_S07_Experts" ToRole="tbl_S07_ExpertsDetailt" />
+  </EntityType>
+  <EntityType Name="tbl_S07_ExpertsDetailt">
+    <Key>
+      <PropertyRef Name="ExId" />
+    </Key>
+    <Property Name="ExId" Type="Guid" Nullable="false" />
+    <Property Name="ExpertId" Type="Guid" />
+    <Property Name="CoId" Type="Guid" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_02" FromRole="tbl_S07_ExpertsDetailt" ToRole="tbl_S07_Courses" />
+    <NavigationProperty Name="tbl_S07_Experts" Relationship="Self.pk_01" FromRole="tbl_S07_ExpertsDetailt" ToRole="tbl_S07_Experts" />
+  </EntityType>
+  <EntityType Name="tbl_S07_SchedStudentDetailt">
+    <Key>
+      <PropertyRef Name="ScsId" />
+    </Key>
+    <Property Name="ScsId" Type="Guid" Nullable="false" />
+    <Property Name="StudetId" Type="Guid" />
+    <Property Name="ScId" Type="Guid" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_S07_Student" Relationship="Self.pk_09" FromRole="tbl_S07_SchedStudentDetailt" ToRole="tbl_S07_Student" />
+    <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_10" FromRole="tbl_S07_SchedStudentDetailt" ToRole="tbl_S07_Schedulers" />
+  </EntityType>
+  <EntityType Name="tbl_S07_Schedulers">
+    <Key>
+      <PropertyRef Name="ScId" />
+    </Key>
+    <Property Name="ScId" Type="Guid" Nullable="false" />
+    <Property Name="WeId" Type="Guid" />
+    <Property Name="ShiftId" Type="Guid" />
+    <Property Name="CoId" Type="Guid" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_06" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_Courses" />
+    <NavigationProperty Name="tbl_S07_SchedStudentDetailt" Relationship="Self.pk_10" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_SchedStudentDetailt" />
+    <NavigationProperty Name="tbl_S07_Weekdays" Relationship="Self.pk_07" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_Weekdays" />
+    <NavigationProperty Name="tbl_S07_ShiftDay" Relationship="Self.pk_08" FromRole="tbl_S07_Schedulers" ToRole="tbl_S07_ShiftDay" />
+  </EntityType>
+  <EntityType Name="tbl_S07_ShiftDay">
+    <Key>
+      <PropertyRef Name="ShiftId" />
+    </Key>
+    <Property Name="ShiftId" Type="Guid" Nullable="false" />
+    <Property Name="ShiftName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_08" FromRole="tbl_S07_ShiftDay" ToRole="tbl_S07_Schedulers" />
+  </EntityType>
+  <EntityType Name="tbl_S07_Student">
+    <Key>
+      <PropertyRef Name="StudetId" />
+    </Key>
+    <Property Name="StudetId" Type="Guid" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <NavigationProperty Name="tbl_S07_SchedStudentDetailt" Relationship="Self.pk_09" FromRole="tbl_S07_Student" ToRole="tbl_S07_SchedStudentDetailt" />
+    <NavigationProperty Name="tbl_S07_StudentDetailt" Relationship="Self.pk_03" FromRole="tbl_S07_Student" ToRole="tbl_S07_StudentDetailt" />
+  </EntityType>
+  <EntityType Name="tbl_S07_StudentDetailt">
+    <Key>
+      <PropertyRef Name="StdId" />
+    </Key>
+    <Property Name="StdId" Type="Guid" Nullable="false" />
+    <Property Name="StudetId" Type="Guid" />
+    <Property Name="CoId" Type="Guid" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_S07_Courses" Relationship="Self.pk_04" FromRole="tbl_S07_StudentDetailt" ToRole="tbl_S07_Courses" />
+    <NavigationProperty Name="tbl_S07_Student" Relationship="Self.pk_03" FromRole="tbl_S07_StudentDetailt" ToRole="tbl_S07_Student" />
+  </EntityType>
+  <EntityType Name="tbl_S07_Weekdays">
+    <Key>
+      <PropertyRef Name="WeId" />
+    </Key>
+    <Property Name="WeId" Type="Guid" Nullable="false" />
+    <Property Name="WeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tbl_S07_Schedulers" Relationship="Self.pk_07" FromRole="tbl_S07_Weekdays" ToRole="tbl_S07_Schedulers" />
+  </EntityType>
+  <Association Name="pk_02">
+    <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+    <End Role="tbl_S07_ExpertsDetailt" Type="Self.tbl_S07_ExpertsDetailt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Courses">
+        <PropertyRef Name="CoId" />
+      </Principal>
+      <Dependent Role="tbl_S07_ExpertsDetailt">
+        <PropertyRef Name="CoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_04">
+    <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+    <End Role="tbl_S07_StudentDetailt" Type="Self.tbl_S07_StudentDetailt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Courses">
+        <PropertyRef Name="CoId" />
+      </Principal>
+      <Dependent Role="tbl_S07_StudentDetailt">
+        <PropertyRef Name="CoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_05">
+    <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+    <End Role="tbl_S07_CoursesJournal" Type="Self.tbl_S07_CoursesJournal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Courses">
+        <PropertyRef Name="CoId" />
+      </Principal>
+      <Dependent Role="tbl_S07_CoursesJournal">
+        <PropertyRef Name="CoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_06">
+    <End Role="tbl_S07_Courses" Type="Self.tbl_S07_Courses" Multiplicity="0..1" />
+    <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Courses">
+        <PropertyRef Name="CoId" />
+      </Principal>
+      <Dependent Role="tbl_S07_Schedulers">
+        <PropertyRef Name="CoId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_01">
+    <End Role="tbl_S07_Experts" Type="Self.tbl_S07_Experts" Multiplicity="0..1" />
+    <End Role="tbl_S07_ExpertsDetailt" Type="Self.tbl_S07_ExpertsDetailt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Experts">
+        <PropertyRef Name="ExpertId" />
+      </Principal>
+      <Dependent Role="tbl_S07_ExpertsDetailt">
+        <PropertyRef Name="ExpertId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_09">
+    <End Role="tbl_S07_Student" Type="Self.tbl_S07_Student" Multiplicity="0..1" />
+    <End Role="tbl_S07_SchedStudentDetailt" Type="Self.tbl_S07_SchedStudentDetailt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Student">
+        <PropertyRef Name="StudetId" />
+      </Principal>
+      <Dependent Role="tbl_S07_SchedStudentDetailt">
+        <PropertyRef Name="StudetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_10">
+    <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="0..1" />
+    <End Role="tbl_S07_SchedStudentDetailt" Type="Self.tbl_S07_SchedStudentDetailt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Schedulers">
+        <PropertyRef Name="ScId" />
+      </Principal>
+      <Dependent Role="tbl_S07_SchedStudentDetailt">
+        <PropertyRef Name="ScId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_07">
+    <End Role="tbl_S07_Weekdays" Type="Self.tbl_S07_Weekdays" Multiplicity="0..1" />
+    <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Weekdays">
+        <PropertyRef Name="WeId" />
+      </Principal>
+      <Dependent Role="tbl_S07_Schedulers">
+        <PropertyRef Name="WeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_08">
+    <End Role="tbl_S07_ShiftDay" Type="Self.tbl_S07_ShiftDay" Multiplicity="0..1" />
+    <End Role="tbl_S07_Schedulers" Type="Self.tbl_S07_Schedulers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_ShiftDay">
+        <PropertyRef Name="ShiftId" />
+      </Principal>
+      <Dependent Role="tbl_S07_Schedulers">
+        <PropertyRef Name="ShiftId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="pk_03">
+    <End Role="tbl_S07_Student" Type="Self.tbl_S07_Student" Multiplicity="0..1" />
+    <End Role="tbl_S07_StudentDetailt" Type="Self.tbl_S07_StudentDetailt" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_S07_Student">
+        <PropertyRef Name="StudetId" />
+      </Principal>
+      <Dependent Role="tbl_S07_StudentDetailt">
+        <PropertyRef Name="StudetId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="eTrainingScheduleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_S07_Courses" EntityType="Self.tbl_S07_Courses" />
+    <EntitySet Name="tbl_S07_CoursesJournal" EntityType="Self.tbl_S07_CoursesJournal" />
+    <EntitySet Name="tbl_S07_Experts" EntityType="Self.tbl_S07_Experts" />
+    <EntitySet Name="tbl_S07_ExpertsDetailt" EntityType="Self.tbl_S07_ExpertsDetailt" />
+    <EntitySet Name="tbl_S07_SchedStudentDetailt" EntityType="Self.tbl_S07_SchedStudentDetailt" />
+    <EntitySet Name="tbl_S07_Schedulers" EntityType="Self.tbl_S07_Schedulers" />
+    <EntitySet Name="tbl_S07_ShiftDay" EntityType="Self.tbl_S07_ShiftDay" />
+    <EntitySet Name="tbl_S07_Student" EntityType="Self.tbl_S07_Student" />
+    <EntitySet Name="tbl_S07_StudentDetailt" EntityType="Self.tbl_S07_StudentDetailt" />
+    <EntitySet Name="tbl_S07_Weekdays" EntityType="Self.tbl_S07_Weekdays" />
+    <AssociationSet Name="pk_02" Association="Self.pk_02">
+      <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+      <End Role="tbl_S07_ExpertsDetailt" EntitySet="tbl_S07_ExpertsDetailt" />
+    </AssociationSet>
+    <AssociationSet Name="pk_04" Association="Self.pk_04">
+      <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+      <End Role="tbl_S07_StudentDetailt" EntitySet="tbl_S07_StudentDetailt" />
+    </AssociationSet>
+    <AssociationSet Name="pk_05" Association="Self.pk_05">
+      <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+      <End Role="tbl_S07_CoursesJournal" EntitySet="tbl_S07_CoursesJournal" />
+    </AssociationSet>
+    <AssociationSet Name="pk_06" Association="Self.pk_06">
+      <End Role="tbl_S07_Courses" EntitySet="tbl_S07_Courses" />
+      <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+    </AssociationSet>
+    <AssociationSet Name="pk_01" Association="Self.pk_01">
+      <End Role="tbl_S07_Experts" EntitySet="tbl_S07_Experts" />
+      <End Role="tbl_S07_ExpertsDetailt" EntitySet="tbl_S07_ExpertsDetailt" />
+    </AssociationSet>
+    <AssociationSet Name="pk_09" Association="Self.pk_09">
+      <End Role="tbl_S07_Student" EntitySet="tbl_S07_Student" />
+      <End Role="tbl_S07_SchedStudentDetailt" EntitySet="tbl_S07_SchedStudentDetailt" />
+    </AssociationSet>
+    <AssociationSet Name="pk_10" Association="Self.pk_10">
+      <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+      <End Role="tbl_S07_SchedStudentDetailt" EntitySet="tbl_S07_SchedStudentDetailt" />
+    </AssociationSet>
+    <AssociationSet Name="pk_07" Association="Self.pk_07">
+      <End Role="tbl_S07_Weekdays" EntitySet="tbl_S07_Weekdays" />
+      <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+    </AssociationSet>
+    <AssociationSet Name="pk_08" Association="Self.pk_08">
+      <End Role="tbl_S07_ShiftDay" EntitySet="tbl_S07_ShiftDay" />
+      <End Role="tbl_S07_Schedulers" EntitySet="tbl_S07_Schedulers" />
+    </AssociationSet>
+    <AssociationSet Name="pk_03" Association="Self.pk_03">
+      <End Role="tbl_S07_Student" EntitySet="tbl_S07_Student" />
+      <End Role="tbl_S07_StudentDetailt" EntitySet="tbl_S07_StudentDetailt" />
+    </AssociationSet>
+    <FunctionImport Name="sp_tbl_S07_Courses_DELETE">
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Courses_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Courses_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_Courses_GetByCoId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Courses_GetByCoId_Result)">
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Courses_INSERT">
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="CourseId" Mode="In" Type="String" />
+      <Parameter Name="CourseName" Mode="In" Type="String" />
+      <Parameter Name="TotalNumber" Mode="In" Type="Byte" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Courses_UPDATE">
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="CourseId" Mode="In" Type="String" />
+      <Parameter Name="CourseName" Mode="In" Type="String" />
+      <Parameter Name="TotalNumber" Mode="In" Type="Byte" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_CoursesJournal_DELETE">
+      <Parameter Name="CJId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_CoursesJournal_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_CoursesJournal_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_CoursesJournal_GetByCJId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_CoursesJournal_GetByCJId_Result)">
+      <Parameter Name="CJId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_CoursesJournal_INSERT">
+      <Parameter Name="CJId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="DayOf" Mode="In" Type="DateTime" />
+      <Parameter Name="Contents" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_CoursesJournal_UPDATE">
+      <Parameter Name="CJId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="DayOf" Mode="In" Type="DateTime" />
+      <Parameter Name="Contents" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Experts_DELETE">
+      <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Experts_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Experts_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_Experts_GetByExpertId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Experts_GetByExpertId_Result)">
+      <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Experts_INSERT">
+      <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Specialize" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Experts_UPDATE">
+      <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Specialize" Mode="In" Type="String" />
+      <Parameter Name="StartDate" Mode="In" Type="DateTime" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+      <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_DELETE">
+      <Parameter Name="ExId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ExpertsDetailt_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_GetByExId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ExpertsDetailt_GetByExId_Result)">
+      <Parameter Name="ExId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_INSERT">
+      <Parameter Name="ExId" Mode="In" Type="Guid" />
+      <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ExpertsDetailt_UPDATE">
+      <Parameter Name="ExId" Mode="In" Type="Guid" />
+      <Parameter Name="ExpertId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_DELETE">
+      <Parameter Name="ScsId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_SchedStudentDetailt_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_GetByScsId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_SchedStudentDetailt_GetByScsId_Result)">
+      <Parameter Name="ScsId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_INSERT">
+      <Parameter Name="ScsId" Mode="In" Type="Guid" />
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+      <Parameter Name="ScId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_SchedStudentDetailt_UPDATE">
+      <Parameter Name="ScsId" Mode="In" Type="Guid" />
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+      <Parameter Name="ScId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Schedulers_DELETE">
+      <Parameter Name="ScId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Schedulers_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Schedulers_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_Schedulers_GetByScId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Schedulers_GetByScId_Result)">
+      <Parameter Name="ScId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Schedulers_INSERT">
+      <Parameter Name="ScId" Mode="In" Type="Guid" />
+      <Parameter Name="WeId" Mode="In" Type="Guid" />
+      <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Schedulers_UPDATE">
+      <Parameter Name="ScId" Mode="In" Type="Guid" />
+      <Parameter Name="WeId" Mode="In" Type="Guid" />
+      <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ShiftDay_DELETE">
+      <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ShiftDay_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ShiftDay_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_ShiftDay_GetByShiftId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_ShiftDay_GetByShiftId_Result)">
+      <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ShiftDay_INSERT">
+      <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+      <Parameter Name="ShiftName" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_ShiftDay_UPDATE">
+      <Parameter Name="ShiftId" Mode="In" Type="Guid" />
+      <Parameter Name="ShiftName" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Student_DELETE">
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Student_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Student_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_Student_GetByStudetId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Student_GetByStudetId_Result)">
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Student_INSERT">
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Student_UPDATE">
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+      <Parameter Name="FullName" Mode="In" Type="String" />
+      <Parameter Name="Email" Mode="In" Type="String" />
+      <Parameter Name="Mobile" Mode="In" Type="String" />
+      <Parameter Name="Address" Mode="In" Type="String" />
+      <Parameter Name="Status" Mode="In" Type="Boolean" />
+      <Parameter Name="Deleted" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_StudentDetailt_DELETE">
+      <Parameter Name="StdId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_StudentDetailt_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_StudentDetailt_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_StudentDetailt_GetByStdId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_StudentDetailt_GetByStdId_Result)">
+      <Parameter Name="StdId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_StudentDetailt_INSERT">
+      <Parameter Name="StdId" Mode="In" Type="Guid" />
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_StudentDetailt_UPDATE">
+      <Parameter Name="StdId" Mode="In" Type="Guid" />
+      <Parameter Name="StudetId" Mode="In" Type="Guid" />
+      <Parameter Name="CoId" Mode="In" Type="Guid" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Weekdays_DELETE">
+      <Parameter Name="WeId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Weekdays_GetAll" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Weekdays_GetAll_Result)" />
+    <FunctionImport Name="sp_tbl_S07_Weekdays_GetByWeId" ReturnType="Collection(eTrainingScheduleModel.sp_tbl_S07_Weekdays_GetByWeId_Result)">
+      <Parameter Name="WeId" Mode="In" Type="Guid" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Weekdays_INSERT">
+      <Parameter Name="WeId" Mode="In" Type="Guid" />
+      <Parameter Name="WeName" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_tbl_S07_Weekdays_UPDATE">
+      <Parameter Name="WeId" Mode="In" Type="Guid" />
+      <Parameter Name="WeName" Mode="In" Type="String" />
+      <Parameter Name="Description" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_tbl_S07_Courses_GetAll_Result">
+    <Property Type="Guid" Name="CoId" Nullable="false" />
+    <Property Type="String" Name="CourseId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="50" />
+    <Property Type="Byte" Name="TotalNumber" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Courses_GetByCoId_Result">
+    <Property Type="Guid" Name="CoId" Nullable="false" />
+    <Property Type="String" Name="CourseId" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="CourseName" Nullable="true" MaxLength="50" />
+    <Property Type="Byte" Name="TotalNumber" Nullable="true" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="EndDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_CoursesJournal_GetAll_Result">
+    <Property Type="Guid" Name="CJId" Nullable="false" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="DateTime" Name="DayOf" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Contents" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_CoursesJournal_GetByCJId_Result">
+    <Property Type="Guid" Name="CJId" Nullable="false" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="DateTime" Name="DayOf" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Contents" Nullable="true" MaxLength="400" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Experts_GetAll_Result">
+    <Property Type="Guid" Name="ExpertId" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Specialize" Nullable="true" MaxLength="150" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Experts_GetByExpertId_Result">
+    <Property Type="Guid" Name="ExpertId" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="Specialize" Nullable="true" MaxLength="150" />
+    <Property Type="DateTime" Name="StartDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_ExpertsDetailt_GetAll_Result">
+    <Property Type="Guid" Name="ExId" Nullable="false" />
+    <Property Type="Guid" Name="ExpertId" Nullable="true" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_ExpertsDetailt_GetByExId_Result">
+    <Property Type="Guid" Name="ExId" Nullable="false" />
+    <Property Type="Guid" Name="ExpertId" Nullable="true" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_SchedStudentDetailt_GetAll_Result">
+    <Property Type="Guid" Name="ScsId" Nullable="false" />
+    <Property Type="Guid" Name="StudetId" Nullable="true" />
+    <Property Type="Guid" Name="ScId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_SchedStudentDetailt_GetByScsId_Result">
+    <Property Type="Guid" Name="ScsId" Nullable="false" />
+    <Property Type="Guid" Name="StudetId" Nullable="true" />
+    <Property Type="Guid" Name="ScId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Schedulers_GetAll_Result">
+    <Property Type="Guid" Name="ScId" Nullable="false" />
+    <Property Type="Guid" Name="WeId" Nullable="true" />
+    <Property Type="Guid" Name="ShiftId" Nullable="true" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Schedulers_GetByScId_Result">
+    <Property Type="Guid" Name="ScId" Nullable="false" />
+    <Property Type="Guid" Name="WeId" Nullable="true" />
+    <Property Type="Guid" Name="ShiftId" Nullable="true" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_ShiftDay_GetAll_Result">
+    <Property Type="Guid" Name="ShiftId" Nullable="false" />
+    <Property Type="String" Name="ShiftName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_ShiftDay_GetByShiftId_Result">
+    <Property Type="Guid" Name="ShiftId" Nullable="false" />
+    <Property Type="String" Name="ShiftName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Student_GetAll_Result">
+    <Property Type="Guid" Name="StudetId" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Student_GetByStudetId_Result">
+    <Property Type="Guid" Name="StudetId" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Mobile" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="Status" Nullable="true" />
+    <Property Type="Boolean" Name="Deleted" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_StudentDetailt_GetAll_Result">
+    <Property Type="Guid" Name="StdId" Nullable="false" />
+    <Property Type="Guid" Name="StudetId" Nullable="true" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_StudentDetailt_GetByStdId_Result">
+    <Property Type="Guid" Name="StdId" Nullable="false" />
+    <Property Type="Guid" Name="StudetId" Nullable="true" />
+    <Property Type="Guid" Name="CoId" Nullable="true" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Weekdays_GetAll_Result">
+    <Property Type="Guid" Name="WeId" Nullable="false" />
+    <Property Type="String" Name="WeName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+  <ComplexType Name="sp_tbl_S07_Weekdays_GetByWeId_Result">
+    <Property Type="Guid" Name="WeId" Nullable="false" />
+    <Property Type="String" Name="WeName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="200" />
+  </ComplexType>
+</Schema>

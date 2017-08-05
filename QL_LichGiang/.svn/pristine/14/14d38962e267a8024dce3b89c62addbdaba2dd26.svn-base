@@ -1,0 +1,96 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+namespace QL_LICHGIANGDAY.UserForm.Student
+{
+    public partial class ThongTinHocVien : DevExpress.XtraEditors.XtraForm
+    {
+        public ThongTinHocVien()
+        {
+            InitializeComponent();
+            btnCapNhat.Enabled = false;
+        }
+
+        public ThongTinHocVien(StudentObjects obj)
+        {
+            InitializeComponent();
+           
+            if (obj != null)
+            {
+                txtHoVaTen.Text = obj.FullName;
+                txtEmail.Text = obj.Email;
+                txtDiaChi.Text = obj.Address;
+                txtMobile.Text = obj.Mobile;
+                txtMaHocVien.Text = ""+obj.StudetId;     
+                btnThemMoi.Enabled = false;
+                
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThemMoi_Click(object sender, EventArgs e)
+        {
+            
+            StudentObjects objStudent = new StudentObjects
+            {
+                StudetId = Guid.NewGuid(),
+                FullName = txtHoVaTen.Text,
+                Address = txtDiaChi.Text,
+                Email = txtEmail.Text,
+                Mobile = txtMobile.Text,
+                Status = false, 
+                Deleted = false              
+                
+            };
+
+            StudentBCL mStudentBCL = new StudentBCL();
+            mStudentBCL.Insert(objStudent);
+            MessageBox.Show("Thêm Học viên thành công!");
+        }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            
+            StudentObjects objStudent = new StudentObjects
+            {                
+                FullName = txtHoVaTen.Text,
+                Address = txtDiaChi.Text,
+                Email = txtEmail.Text,             
+                Mobile = txtEmail.Text,
+                StudetId = Guid.Parse(txtMaHocVien.Text),
+                Deleted = false
+            };
+            StudentBCL mStudentBCL = new StudentBCL();
+            mStudentBCL.Update(objStudent);
+            MessageBox.Show("Cập nhật Học Viên thành công!");
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+       
+
+       
+    }
+}

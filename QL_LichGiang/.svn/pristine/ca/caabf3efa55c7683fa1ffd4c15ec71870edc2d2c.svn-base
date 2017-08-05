@@ -1,0 +1,77 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Text;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using DevExpress.XtraEditors;
+using BUSINESS_LOGIC_LAYER.BCL;
+using BUSINESS_OBJECT.Objects;
+
+namespace QL_LICHGIANGDAY.UserForm.ExpertsDetailt
+{
+    public partial class UsAddExpertsDetailt : DevExpress.XtraEditors.XtraForm
+    {
+        private ExpertsObjects objExpert;
+        public UsAddExpertsDetailt()
+        {
+            InitializeComponent();
+            
+        }
+
+       
+
+        private void btnInsert_Click(object sender, EventArgs e)
+        {
+            ExpertsObjects objExpert = (ExpertsObjects)cboMaChuyenGia.SelectedItem; 
+            CoursesObjects objCourses = (CoursesObjects)cboMaKhoaHoc.SelectedItem;
+            ExpertsDetailtObjects objExpetsDetailt = new ExpertsDetailtObjects
+            {
+                ExId = Guid.NewGuid(),
+                Description = txtMota.Text,
+                ExpertId = (Guid)objExpert.ExpertId,
+                CoId = (Guid)objCourses.CoId
+            };
+
+            ExpertsDetailtBCL mExpertDetailtBCL = new ExpertsDetailtBCL();
+
+            mExpertDetailtBCL.Insert(objExpetsDetailt);
+            MessageBox.Show("Thêm Chi tiết Chuyên gia thành công!");
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {            
+            this.Close();
+        }
+
+        void LoadDataChuyenGia()
+        {
+            ExpertsBCL mExpertBCL = new ExpertsBCL();
+            List<ExpertsObjects> lisExpert = mExpertBCL.GetAll();
+            foreach (ExpertsObjects obj in lisExpert)
+            {
+                cboMaChuyenGia.Properties.Items.Add(obj);
+            }
+        }
+
+        void LoadDataKhoaHoc()
+        {
+            CoursesBCL mCoursesBCL = new CoursesBCL();
+            List<CoursesObjects> lisCourse = mCoursesBCL.GetAll();
+            foreach (CoursesObjects obj in lisCourse)
+            {
+                cboMaKhoaHoc.Properties.Items.Add(obj);
+            }
+        }
+
+        private void groupControl1_Enter(object sender, EventArgs e)
+        {
+            LoadDataKhoaHoc();
+            LoadDataChuyenGia();
+
+        }
+    }
+}

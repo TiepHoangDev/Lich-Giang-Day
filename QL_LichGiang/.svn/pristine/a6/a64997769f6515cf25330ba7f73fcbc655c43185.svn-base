@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="dea69633c45d46e9920641114de3a2a3" Name="Diagram1" >
+        <EntityTypeShape EntityType="eTrainingScheduleModel.sysdiagram" Width="1.5" PointX="10.75" PointY="5" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_Account" Width="1.5" PointX="8" PointY="1.25" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_FeaId" Width="1.5" PointX="8" PointY="9.875" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_Permisstion" Width="1.5" PointX="10.25" PointY="1.375" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_Role" Width="1.5" PointX="5.75" PointY="1.875" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_Courses" Width="1.5" PointX="0.75" PointY="5.625" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_CoursesJournal" Width="1.5" PointX="3" PointY="12.75" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_Experts" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_ExpertsDetailt" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_SchedStudentDetailt" Width="1.5" PointX="8.25" PointY="6.25" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_Schedulers" Width="1.5" PointX="6" PointY="6" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_ShiftDay" Width="1.5" PointX="3.75" PointY="9.25" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_Student" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_StudentDetailt" Width="1.5" PointX="3" PointY="3.25" />
+        <EntityTypeShape EntityType="eTrainingScheduleModel.tbl_S07_Weekdays" Width="1.5" PointX="3.75" PointY="0.75" />
+        <AssociationConnector Association="eTrainingScheduleModel.fk_Account_01" />
+        <AssociationConnector Association="eTrainingScheduleModel.fk_Permisstion_02" />
+        <AssociationConnector Association="eTrainingScheduleModel.fk_Permisstion_01" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_02" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_04" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_05" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_06" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_01" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_09" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_10" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_07" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_08" />
+        <AssociationConnector Association="eTrainingScheduleModel.pk_03" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
